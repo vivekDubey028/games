@@ -23,7 +23,9 @@
     /* Luxurious Header Styles */
     header {
       width: 100%;
-      height: 120px;
+      height: 10vh;
+      min-height: 100px;
+      max-height: 120px;
       background: linear-gradient(115deg, #111827 0%, #00A36C 50%, #111827 100%);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
       position: relative;
@@ -49,7 +51,7 @@
     /* Game Title - Retro Glam */
     .game-title {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.2rem;
+      font-size: clamp(1.3rem, 4vw, 2.2rem);
       font-weight: 700;
       color: #facc15;
       text-shadow: 0 0 10px rgba(250, 204, 21, 0.7), 0 0 20px rgba(250, 204, 21, 0.4), 2px 2px 0 #000;
@@ -60,7 +62,7 @@
 
     .game-title::after {
       content: '™';
-      font-size: 1rem;
+      font-size: clamp(0.6rem, 1.5vw, 1rem);
       vertical-align: super;
       margin-left: 5px;
     }
@@ -72,7 +74,7 @@
       top: 50%;
       transform: translate(-50%, -50%);
       background: radial-gradient(circle at center, #facc15 0%, #eab308 60%, #d97706 100%);
-      padding: 16px 40px;
+      padding: clamp(8px, 2vw, 16px) clamp(20px, 5vw, 40px);
       border-radius: 50px;
       box-shadow: 0 0 20px rgba(250, 204, 21, 0.8), inset 0 4px 10px rgba(255, 215, 0, 0.6), inset 0 -4px 10px rgba(185, 119, 0, 0.6), 0 6px 0 rgba(139, 92, 0, 0.4);
       display: flex;
@@ -80,7 +82,7 @@
       align-items: center;
       justify-content: center;
       border: 2px solid #fff;
-      min-width: 200px;
+      min-width: clamp(120px, 20vw, 200px);
       z-index: 20;
       animation: pulse-glow 3s infinite alternate;
     }
@@ -113,7 +115,7 @@
 
     .jackpot-label {
       font-family: 'Playfair Display', serif;
-      font-size: 1rem;
+      font-size: clamp(0.7rem, 1.5vw, 1rem);
       font-weight: 700;
       color: #111;
       letter-spacing: 2px;
@@ -124,7 +126,7 @@
 
     .jackpot-amount {
       font-family: 'Orbitron', sans-serif;
-      font-size: 2rem;
+      font-size: clamp(1rem, 3vw, 2rem);
       font-weight: 700;
       color: #111;
       text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4), 0 0 10px rgba(255, 215, 0, 0.8);
@@ -167,13 +169,13 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
-      gap: 12px;
-      width: 90%;
-      max-width: 500px;
+      gap: clamp(6px, 2vw, 12px);
+      width: clamp(300px, 80vw, 500px);
       height: auto;
       aspect-ratio: 1/1;
+      max-height: 70vh;
       overflow: hidden;
-      margin: 20px auto;
+      margin: clamp(10px, 5vw, 20px) auto;
       box-sizing: border-box;
     }
 
@@ -193,7 +195,7 @@
       height: 100%;
       background: linear-gradient(135deg, #f3f4f6, #e5e7eb, #d1d5db);
       border-radius: 4px;
-      padding: 6px;
+      padding: clamp(3px, 1vw, 6px);
       position: relative;
       border: 3px solid #f7ef8a;
       margin: 1px;
@@ -337,7 +339,7 @@
       bottom: 0;
       width: 100%;
       background: linear-gradient(115deg, #111827 0%, #00A36C 50%, #111827 100%);
-      padding: 10px 20px;
+      padding: clamp(5px, 2vw, 10px) clamp(10px, 5vw, 20px);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -350,7 +352,7 @@
     .left-section, .center-section, .right-section {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: clamp(5px, 1vw, 10px);
     }
 
     .left-section {
@@ -365,19 +367,19 @@
     .right-section {
       flex: 1;
       justify-content: flex-end;
-      margin-right:30px;
+      margin-right: clamp(10px, 5vw, 30px);
     }
 
     .btn {
-      padding: 10px 15px;
-      margin: 0 5px;
+      padding: clamp(5px, 1.5vw, 10px) clamp(7px, 2vw, 15px);
+      margin: 0 clamp(2px, 0.5vw, 5px);
       border: none;
       border-radius: 10px;
       cursor: pointer;
       font-weight: bold;
       text-transform: uppercase;
       transition: all 0.2s ease;
-      font-size: 0.8rem;
+      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
     }
 
     .btn:hover {
@@ -385,10 +387,10 @@
     }
 
     .win {
-      font-size: 1.2rem;
+      font-size: clamp(0.8rem, 2vw, 1.2rem);
       font-weight: bold;
       color: #ffd700;
-      padding: 5px 10px;
+      padding: clamp(3px, 1vw, 5px) clamp(5px, 2vw, 10px);
       background: rgba(0, 0, 0, 0.3);
       border-radius: 10px;
       text-align: center;
@@ -407,7 +409,7 @@
     .spin::after {
       content: "HOLD FOR AUTOSPIN";
       display: block;
-      font-size: 0.6rem;
+      font-size: clamp(0.4rem, 1vw, 0.6rem);
       font-weight: normal;
       margin-top: 2px;
     }
@@ -418,36 +420,36 @@
       align-items: center;
       background: #004d99;
       border-radius: 10px;
-      padding: 5px 8px;
-      font-size: 0.8rem;
+      padding: clamp(3px, 1vw, 5px) clamp(4px, 1.5vw, 8px);
+      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
     }
 
     .play-section span {
       color: #adff2f;
       font-weight: bold;
-      margin: 3px 0;
+      margin: clamp(2px, 0.5vw, 3px) 0;
       white-space: nowrap;
     }
 
     .play-section .amount {
       color: white;
-      margin: 0 3px;
+      margin: 0 clamp(2px, 0.5vw, 3px);
     }
 
     .lines-count {
       background: #004d99;
       border-radius: 10px;
-      padding: 8px;
+      padding: clamp(5px, 1.5vw, 8px);
       color: #adff2f;
       font-weight: bold;
-      font-size: 0.8rem;
+      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
       white-space: nowrap;
     }
 
     .win-cylinder {
       position: relative;
       background: radial-gradient(circle at center, #facc15 0%, #eab308 60%, #d97706 100%);
-      padding: 8px 20px;
+      padding: clamp(5px, 1.5vw, 8px) clamp(10px, 3vw, 20px);
       border-radius: 50px;
       box-shadow: 0 0 15px rgba(250, 204, 21, 0.8), inset 0 4px 8px rgba(255, 215, 0, 0.6), inset 0 -4px 8px rgba(185, 119, 0, 0.6), 0 4px 0 rgba(139, 92, 0, 0.4);
       display: flex;
@@ -455,7 +457,7 @@
       align-items: center;
       justify-content: center;
       border: 2px solid #fff;
-      min-width: 120px;
+      min-width: clamp(100px, 15vw, 120px);
     }
 
     .win-cylinder::before {
@@ -505,16 +507,16 @@
     }
 
     .loader-image {
-      width: 100px;
-      height: 100px;
+      width: clamp(80px, 15vw, 100px);
+      height: clamp(80px, 15vw, 100px);
       background: url('https://img.icons8.com/?size=100&id=18041&format=png&color=000000') no-repeat center;
       background-size: contain;
-      margin-bottom: 15px;
+      margin-bottom: clamp(10px, 2vw, 15px);
     }
 
     .loader-progress {
-      width: 150px;
-      height: 15px;
+      width: clamp(120px, 20vw, 150px);
+      height: clamp(10px, 2vw, 15px);
       background: #333;
       border-radius: 8px;
       overflow: hidden;
@@ -536,17 +538,17 @@
 
     .loader-text {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.2rem;
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
       color: #ffeb3b;
       text-shadow: 0 0 8px #ffeb3b, 0 0 16px #ff9800, 0 0 24px #f44336;
-      margin-top: 15px;
+      margin-top: clamp(10px, 2vw, 15px);
     }
 
     /* 3D Button Styles for Fast and Spin */
     .fast, .spin {
       position: relative;
-      padding: 8px 15px;
-      margin: 0 3px;
+      padding: clamp(5px, 1.5vw, 8px) clamp(10px, 2vw, 15px);
+      margin: 0 clamp(2px, 0.5vw, 3px);
       border-radius: 8px;
       font-weight: bold;
       font-family: 'Orbitron', sans-serif;
@@ -554,7 +556,7 @@
       text-transform: uppercase;
       transition: all 0.2s ease;
       overflow: hidden;
-      font-size: 0.8rem;
+      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
     }
 
     .fast::before, .spin::before {
@@ -619,136 +621,44 @@
     }
 
     /* Responsive adjustments */
-    @media (max-width: 1024px) {
-      header {
-        height: 100px;
-      }
-      .game-title {
-        font-size: 1.8rem;
-      }
-      .jackpot-cylinder {
-        padding: 14px 32px;
-        min-width: 180px;
-      }
-      .jackpot-amount {
-        font-size: 1.8rem;
-      }
-    }
-
     @media (max-width: 768px) {
       header {
-        height: 90px;
+        height: auto;
         flex-direction: column;
-        padding: 10px 5%;
+        padding: clamp(5px, 2vw, 10px) 5%;
       }
       .game-title {
-        font-size: 1.5rem;
-        margin-bottom: 5px;
+        margin-bottom: clamp(5px, 1vw, 10px);
       }
       .jackpot-cylinder {
         position: relative;
         left: auto;
         top: auto;
         transform: none;
-        padding: 10px 24px;
-        min-width: 160px;
-        margin-top: 5px;
-      }
-      .jackpot-amount {
-        font-size: 1.5rem;
+        margin-top: clamp(5px, 1vw, 10px);
       }
       
       .bottom-bar {
         flex-direction: column;
-        padding: 10px;
+        padding: clamp(5px, 2vw, 10px);
         position: relative;
       }
       
       .left-section, .center-section, .right-section {
         width: 100%;
         justify-content: center;
-        margin: 5px 0;
+        margin: clamp(5px, 1vw, 10px) 0;
       }
       
       .win-cylinder {
-        margin: 10px 0;
+        margin: clamp(5px, 1vw, 10px) 0;
       }
     }
 
     @media (max-width: 480px) {
-      header {
-        height: auto;
-        padding: 10px 5%;
-      }
-      .game-title {
-        font-size: 1.3rem;
-      }
-      .jackpot-cylinder {
-        padding: 8px 20px;
-        min-width: 140px;
-      }
-      .jackpot-label {
-        font-size: 0.8rem;
-      }
-      .jackpot-amount {
-        font-size: 1.2rem;
-      }
-      
       .slot-machine-container {
-        width: 95%;
-        margin: 10px auto;
-      }
-      
-      .btn {
-        padding: 8px 12px;
-        font-size: 0.7rem;
-      }
-      
-      .spin::after {
-        font-size: 0.5rem;
-      }
-      
-      .play-section {
-        font-size: 0.7rem;
-        padding: 3px 5px;
-      }
-      
-      .lines-count {
-        font-size: 0.7rem;
-        padding: 5px;
-      }
-      
-      .win {
-        font-size: 1rem;
-        padding: 3px 8px;
-      }
-    }
-
-    @media (max-width: 350px) {
-      .game-title {
-        font-size: 1.1rem;
-      }
-      
-      .jackpot-cylinder {
-        padding: 6px 15px;
-        min-width: 120px;
-      }
-      
-      .jackpot-label {
-        font-size: 0.7rem;
-      }
-      
-      .jackpot-amount {
-        font-size: 1rem;
-      }
-      
-      .btn {
-        padding: 6px 8px;
-        font-size: 0.6rem;
-      }
-      
-      .spin::after {
-        font-size: 0.4rem;
+        width: 90%;
+        margin: clamp(5px, 2vw, 10px) auto;
       }
     }
   </style>
@@ -781,7 +691,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-0-0"></div>
+              <div class="reel-strip" id="reel-0-0">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/emoji/96/cherries.png" alt="Cherry" data-symbol="cherry">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -792,7 +706,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-0-1"></div>
+              <div class="reel-strip" id="reel-0-1">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/emoji/96/tangerine.png" alt="Orange" data-symbol="orange">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -803,7 +721,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-0-2"></div>
+              <div class="reel-strip" id="reel-0-2">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/?size=100&id=lCQ1YNBkdOcR&format=png&color=000000" alt="7" data-symbol="7">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -816,7 +738,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-1-0"></div>
+              <div class="reel-strip" id="reel-1-0">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/emoji/96/lemon.png" alt="Lemon" data-symbol="lemon">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -827,7 +753,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-1-1"></div>
+              <div class="reel-strip" id="reel-1-1">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/?size=100&id=RCFpEF2O1xdZ&format=png&color=000000" alt="Grapes" data-symbol="grapes">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -838,7 +768,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-1-2"></div>
+              <div class="reel-strip" id="reel-1-2">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/?size=100&id=qsamHkjVPQf3&format=png&color=000000" alt="Watermelon" data-symbol="watermelon">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -851,7 +785,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-2-0"></div>
+              <div class="reel-strip" id="reel-2-0">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/emoji/96/star-emoji.png" alt="Star" data-symbol="star">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -862,7 +800,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-2-1"></div>
+              <div class="reel-strip" id="reel-2-1">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/?size=100&id=18041&format=png&color=000000" alt="Strawberry" data-symbol="strawberry">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -873,7 +815,11 @@
         <div class="panel-screen">
           <div class="screen-content">
             <div class="reel-container">
-              <div class="reel-strip" id="reel-2-2"></div>
+              <div class="reel-strip" id="reel-2-2">
+                <div class="reel-symbol">
+                  <img src="https://img.icons8.com/emoji/96/gem-stone.png" alt="Diamond" data-symbol="diamond">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1003,31 +949,9 @@
 
     // Initialize the game
     function init() {
-      createReelStrips();
       updateUI();
       createSparkleEffects();
       setupEventListeners();
-    }
-
-    // Create reel strips with symbols
-    function createReelStrips() {
-      const symbolsPerReel = 15; // Enough symbols for smooth animation
-      
-      for (let row = 0; row < 3; row++) {
-        for (let col = 0; col < 3; col++) {
-          const reelStrip = document.getElementById(`reel-${row}-${col}`);
-          reelStrip.innerHTML = '';
-          
-          // Create multiple copies of symbols for smooth spinning
-          for (let i = 0; i < symbolsPerReel; i++) {
-            const randomSymbol = config.reelStrip[Math.floor(Math.random() * config.reelStrip.length)];
-            const symbolElement = document.createElement('div');
-            symbolElement.className = 'reel-symbol';
-            symbolElement.innerHTML = `<img src="${config.symbols[randomSymbol].image}" alt="${randomSymbol}" data-symbol="${randomSymbol}">`;
-            reelStrip.appendChild(symbolElement);
-          }
-        }
-      }
     }
 
     // Update all UI elements based on game state
@@ -1123,82 +1047,93 @@
 
     // Main spin function with improved animation
     function spin() {
-  if (state.isSpinning || state.userAmount < state.totalLines) return;
-  
-  state.isSpinning = true;
-  state.userAmount -= state.totalLines;
-  state.spinningReels = 9; // 3x3 grid
-  updateUI();
-  
-  // Reset win amount
-  elements.winAmount.textContent = `0 WIN`;
-  
-  // Play spin sound
-  elements.spinSound.currentTime = 0;
-  elements.spinSound.play().catch(error => console.log("Audio play failed:", error));
+      if (state.isSpinning || state.userAmount < state.totalLines) return;
+      
+      state.isSpinning = true;
+      state.userAmount -= state.totalLines;
+      state.spinningReels = 9; // 3x3 grid
+      updateUI();
+      
+      // Reset win amount
+      elements.winAmount.textContent = `0 WIN`;
+      
+      // Play spin sound
+      elements.spinSound.currentTime = 0;
+      elements.spinSound.play().catch(error => console.log("Audio play failed:", error));
 
-  // Start spinning animation for all reels
-  const reels = document.querySelectorAll('.reel-strip');
-  reels.forEach((reel, index) => {
-    // Initial setup
-    reel.style.transition = 'none';
-    reel.style.transform = 'translateY(0)';
-    reel.classList.add('spinning');
-    
-    // After a short delay, set up the proper transition
-    setTimeout(() => {
-      reel.style.transition = `transform ${state.isFastSpin ? '1.5s' : '2.5s'} cubic-bezier(0.1, 0.7, 0.1, 1)`;
-      
-      // Calculate random stop position (multiple of symbol height)
-      const symbolHeight = reel.offsetHeight / 15; // Each symbol height
-      const reelHeight = reel.offsetHeight;
-      const randomOffset = Math.floor(Math.random() * 10) * symbolHeight;
-      const spinDistance = reelHeight + randomOffset;
-      
-      reel.style.transform = `translateY(-${spinDistance}px)`;
-      
-      // When this reel finishes spinning
-      setTimeout(() => {
-        reel.classList.remove('spinning');
+      // Start spinning animation for all reels
+      const reels = document.querySelectorAll('.reel-strip');
+      reels.forEach((reel, index) => {
+        // Initial setup
+        reel.style.transition = 'none';
+        reel.style.transform = 'translateY(0)';
+        reel.classList.add('spinning');
         
-        // Snap to nearest symbol
-        const currentPosition = parseInt(reel.style.transform.replace('translateY(', '').replace('px)', ''));
-        const snappedPosition = Math.round(currentPosition / symbolHeight) * symbolHeight;
-        const finalPosition = snappedPosition % reelHeight;
-        
-        reel.style.transition = 'transform 0.3s ease-out';
-        reel.style.transform = `translateY(${finalPosition}px)`;
-        
-        // Check if all reels have stopped
-        state.spinningReels--;
-        if (state.spinningReels === 0) {
-          elements.spinSound.pause(); // Stop the spinning sound when all reels stop
-          checkWin();
-          state.isSpinning = false;
-        }
-      }, state.isFastSpin ? 1500 : 2500);
-    }, index * 100); // Stagger reel starts slightly
-  });
-}    
+        // After a short delay, set up the proper transition
+        setTimeout(() => {
+          reel.style.transition = `transform ${state.isFastSpin ? '1.5s' : '2.5s'} cubic-bezier(0.1, 0.7, 0.1, 1)`;
+          
+          // Calculate random stop position
+          const symbolHeight = reel.querySelector('.reel-symbol').offsetHeight;
+          const reelHeight = reel.offsetHeight;
+          const randomOffset = Math.floor(Math.random() * 10) * symbolHeight;
+          const spinDistance = reelHeight + randomOffset;
+          
+          reel.style.transform = `translateY(-${spinDistance}px)`;
+          
+          // When this reel finishes spinning
+          setTimeout(() => {
+            reel.classList.remove('spinning');
+            
+            // Snap to single symbol and update with a new random symbol
+            const currentPosition = parseInt(reel.style.transform.replace('translateY(', '').replace('px)', ''));
+            const snappedPosition = Math.round(currentPosition / symbolHeight) * symbolHeight;
+            const finalPosition = snappedPosition % reelHeight;
+            
+            reel.style.transition = 'transform 0.3s ease-out';
+            reel.style.transform = `translateY(${finalPosition}px)`;
+            
+            // Update the image with a new random symbol
+            const randomSymbol = config.reelStrip[Math.floor(Math.random() * config.reelStrip.length)];
+            const imgElement = reel.querySelector('img');
+            imgElement.src = config.symbols[randomSymbol].image;
+            imgElement.alt = randomSymbol;
+            imgElement.setAttribute('data-symbol', randomSymbol);
+            
+            // Play reel stop sound
+            elements.reelStopSound.currentTime = 0;
+            elements.reelStopSound.play().catch(error => console.log("Audio play failed:", error));
+            
+            // Check if all reels have stopped
+            state.spinningReels--;
+            if (state.spinningReels === 0) {
+              elements.spinSound.pause(); // Stop the spinning sound when all reels stop
+              checkWin();
+              state.isSpinning = false;
+            }
+          }, state.isFastSpin ? 1500 : 2500);
+        }, index * 100); // Stagger reel starts slightly
+      });
+    }
 
     // Check for winning combinations
     function checkWin() {
       const reels = document.querySelectorAll('.reel-strip');
       const grid = [
         [
-          reels[0].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol'),
-          reels[1].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol'),
-          reels[2].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol')
+          reels[0].querySelector('.reel-symbol img').getAttribute('data-symbol'),
+          reels[1].querySelector('.reel-symbol img').getAttribute('data-symbol'),
+          reels[2].querySelector('.reel-symbol img').getAttribute('data-symbol')
         ],
         [
-          reels[3].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol'),
-          reels[4].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol'),
-          reels[5].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol')
+          reels[3].querySelector('.reel-symbol img').getAttribute('data-symbol'),
+          reels[4].querySelector('.reel-symbol img').getAttribute('data-symbol'),
+          reels[5].querySelector('.reel-symbol img').getAttribute('data-symbol')
         ],
         [
-          reels[6].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol'),
-          reels[7].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol'),
-          reels[8].querySelector('.reel-symbol:nth-child(1) img').getAttribute('data-symbol')
+          reels[6].querySelector('.reel-symbol img').getAttribute('data-symbol'),
+          reels[7].querySelector('.reel-symbol img').getAttribute('data-symbol'),
+          reels[8].querySelector('.reel-symbol img').getAttribute('data-symbol')
         ]
       ];
 
