@@ -156,67 +156,6 @@
       100% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.8); }
     }
 
-    /* Responsive Header */
-    @media (max-width: 1024px) {
-      header {
-        height: 100px;
-      }
-      .game-title {
-        font-size: 1.8rem;
-      }
-      .jackpot-cylinder {
-        padding: 14px 32px;
-        min-width: 180px;
-      }
-      .jackpot-amount {
-        font-size: 1.8rem;
-      }
-    }
-
-    @media (max-width: 768px) {
-      header {
-        height: 90px;
-        flex-direction: column;
-        padding: 10px 5%;
-      }
-      .game-title {
-        font-size: 1.5rem;
-        margin-bottom: 5px;
-      }
-      .jackpot-cylinder {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        padding: 10px 24px;
-        min-width: 160px;
-        margin-top: 5px;
-      }
-      .jackpot-amount {
-        font-size: 1.5rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header {
-        height: auto;
-        padding: 15px 5%;
-      }
-      .game-title {
-        font-size: 1.3rem;
-      }
-      .jackpot-cylinder {
-        padding: 8px 20px;
-        min-width: 140px;
-      }
-      .jackpot-label {
-        font-size: 0.8rem;
-      }
-      .jackpot-amount {
-        font-size: 1.2rem;
-      }
-    }
-
     /* Slot machine main container centered on the screen */
     .slot-machine-container {
       position: relative;
@@ -229,25 +168,23 @@
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(3, 1fr);
       gap: 12px;
-      width: 436px;
+      width: 90%;
+      max-width: 500px;
       height: auto;
-      max-width: none;
-      max-height: 90vh;
+      aspect-ratio: 1/1;
       overflow: hidden;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 80px;
+      margin: 20px auto;
       box-sizing: border-box;
     }
 
     /* Each slot panel */
     .slot-panel {
-      width: 140px;
-      height: 100px;
       position: relative;
-      align-items: center;
       display: flex;
       justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
     }
 
     /* Outer panel frame with shine and border */
@@ -297,8 +234,8 @@
     /* Improved spinning effect */
     .reel-container {
       position: relative;
-      height: 100px;
       width: 100%;
+      height: 100%;
       overflow: hidden;
       perspective: 500px;
     }
@@ -324,8 +261,8 @@
     }
 
     .reel-symbol {
-      height: 100px;
       width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -394,22 +331,6 @@
       100% { opacity: 1; }
     }
 
-    /* Responsive design for smaller screens */
-    @media (max-width: 768px) {
-      .slot-machine-container {
-        padding: 0px 16px 16px 0px;
-        width: 300px;
-        height: 256px;
-      }
-      .slot-panel {
-        width: 100px;
-        height: 80px;
-      }
-      .reel-symbol {
-        height: 80px;
-      }
-    }
-
     /* Bottom Bar Styles */
     .bottom-bar {
       position: fixed;
@@ -444,31 +365,33 @@
     .right-section {
       flex: 1;
       justify-content: flex-end;
-      margin-right: 30px;
+      margin-right:30px;
     }
 
     .btn {
-      padding: 10px 20px;
+      padding: 10px 15px;
       margin: 0 5px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       font-weight: bold;
       text-transform: uppercase;
-      transition: background 0.2s ease;
+      transition: all 0.2s ease;
+      font-size: 0.8rem;
     }
 
     .btn:hover {
-      background: #003366;
+      transform: translateY(-2px);
     }
 
     .win {
-      font-size: 24px;
+      font-size: 1.2rem;
       font-weight: bold;
       color: #ffd700;
-      padding: 5px 15px;
+      padding: 5px 10px;
       background: rgba(0, 0, 0, 0.3);
       border-radius: 10px;
+      text-align: center;
     }
 
     .fast {
@@ -484,7 +407,7 @@
     .spin::after {
       content: "HOLD FOR AUTOSPIN";
       display: block;
-      font-size: 10px;
+      font-size: 0.6rem;
       font-weight: normal;
       margin-top: 2px;
     }
@@ -495,49 +418,53 @@
       align-items: center;
       background: #004d99;
       border-radius: 10px;
-      padding: 5px 10px;
+      padding: 5px 8px;
+      font-size: 0.8rem;
     }
 
     .play-section span {
       color: #adff2f;
       font-weight: bold;
-      margin: 5px 0;
+      margin: 3px 0;
+      white-space: nowrap;
     }
 
     .play-section .amount {
       color: white;
-      margin: 0 5px;
+      margin: 0 3px;
     }
 
     .lines-count {
       background: #004d99;
       border-radius: 10px;
-      padding: 10px;
+      padding: 8px;
       color: #adff2f;
       font-weight: bold;
+      font-size: 0.8rem;
+      white-space: nowrap;
     }
 
     .win-cylinder {
       position: relative;
       background: radial-gradient(circle at center, #facc15 0%, #eab308 60%, #d97706 100%);
-      padding: 10px 30px;
+      padding: 8px 20px;
       border-radius: 50px;
-      box-shadow: 0 0 20px rgba(250, 204, 21, 0.8), inset 0 4px 10px rgba(255, 215, 0, 0.6), inset 0 -4px 10px rgba(185, 119, 0, 0.6), 0 6px 0 rgba(139, 92, 0, 0.4);
+      box-shadow: 0 0 15px rgba(250, 204, 21, 0.8), inset 0 4px 8px rgba(255, 215, 0, 0.6), inset 0 -4px 8px rgba(185, 119, 0, 0.6), 0 4px 0 rgba(139, 92, 0, 0.4);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       border: 2px solid #fff;
-      min-width: 180px;
+      min-width: 120px;
     }
 
     .win-cylinder::before {
       content: '';
       position: absolute;
-      top: 4px;
-      left: 4px;
-      right: 4px;
-      bottom: 4px;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
       border-radius: 46px;
       background: linear-gradient(145deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
       pointer-events: none;
@@ -546,26 +473,13 @@
     .win-cylinder::after {
       content: '';
       position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
+      top: 1px;
+      left: 1px;
+      right: 1px;
+      bottom: 1px;
       border-radius: 48px;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
       pointer-events: none;
-    }
-
-    @media (max-width: 768px) {
-      .bottom-bar {
-        flex-direction: column;
-        align-items: stretch;
-        padding: 10px;
-      }
-
-      .left-section, .center-section, .right-section {
-        justify-content: center;
-        margin: 5px 0;
-      }
     }
 
     /* Loader Styles */
@@ -591,18 +505,18 @@
     }
 
     .loader-image {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
       background: url('https://img.icons8.com/?size=100&id=18041&format=png&color=000000') no-repeat center;
       background-size: contain;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .loader-progress {
-      width: 200px;
-      height: 20px;
+      width: 150px;
+      height: 15px;
       background: #333;
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
       position: relative;
     }
@@ -612,7 +526,7 @@
       height: 100%;
       background: linear-gradient(90deg, #ffeb3b, #ff9800);
       animation: loading 2s infinite linear;
-      border-radius: 10px;
+      border-radius: 8px;
     }
 
     @keyframes loading {
@@ -622,34 +536,35 @@
 
     .loader-text {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: #ffeb3b;
-      text-shadow: 0 0 10px #ffeb3b, 0 0 20px #ff9800, 0 0 30px #f44336;
-      margin-top: 20px;
+      text-shadow: 0 0 8px #ffeb3b, 0 0 16px #ff9800, 0 0 24px #f44336;
+      margin-top: 15px;
     }
 
     /* 3D Button Styles for Fast and Spin */
     .fast, .spin {
       position: relative;
-      padding: 10px 20px;
-      margin: 0 5px;
-      border-radius: 10px;
+      padding: 8px 15px;
+      margin: 0 3px;
+      border-radius: 8px;
       font-weight: bold;
       font-family: 'Orbitron', sans-serif;
       cursor: pointer;
       text-transform: uppercase;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: all 0.2s ease;
       overflow: hidden;
+      font-size: 0.8rem;
     }
 
     .fast::before, .spin::before {
       content: '';
       position: absolute;
-      top: 4px;
-      left: 4px;
-      right: 4px;
-      bottom: 4px;
-      border-radius: 6px;
+      top: 3px;
+      left: 3px;
+      right: 3px;
+      bottom: 3px;
+      border-radius: 5px;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
       z-index: 1;
     }
@@ -662,7 +577,7 @@
       width: 80%;
       height: 80%;
       background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
-      border-radius: 6px;
+      border-radius: 5px;
       z-index: 2;
       opacity: 0.6;
     }
@@ -671,18 +586,17 @@
       background: linear-gradient(135deg, #ff4d4d, #cc0000);
       border: 2px solid #ff6666;
       color: white;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.3), inset 0 -2px 3px rgba(0, 0, 0, 0.2);
     }
 
     .fast:hover {
       transform: translateY(-2px);
-      background: linear-gradient(135deg, #ff6666, #cc0000);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5), inset 0 3px 6px rgba(255, 255, 255, 0.4), inset 0 -3px 6px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5), inset 0 3px 5px rgba(255, 255, 255, 0.4), inset 0 -3px 5px rgba(0, 0, 0, 0.3);
     }
 
     .fast:active {
       transform: translateY(1px);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 3px 4px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 3px 4px rgba(255, 255, 255, 0.2);
       background: linear-gradient(135deg, #cc0000, #990000);
     }
 
@@ -690,19 +604,152 @@
       background: linear-gradient(135deg, #00cc66, #00994d);
       border: 2px solid #00ff80;
       color: white;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 2px 4px rgba(255, 255, 255, 0.3), inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.3), inset 0 -2px 3px rgba(0, 0, 0, 0.2);
     }
 
     .spin:hover {
       transform: translateY(-2px);
-      background: linear-gradient(135deg, #00ff80, #00994d);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5), inset 0 3px 6px rgba(255, 255, 255, 0.4), inset 0 -3px 6px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5), inset 0 3px 5px rgba(255, 255, 255, 0.4), inset 0 -3px 5px rgba(0, 0, 0, 0.3);
     }
 
     .spin:active {
       transform: translateY(1px);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 3px 4px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 3px 4px rgba(255, 255, 255, 0.2);
       background: linear-gradient(135deg, #00994d, #006633);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      header {
+        height: 100px;
+      }
+      .game-title {
+        font-size: 1.8rem;
+      }
+      .jackpot-cylinder {
+        padding: 14px 32px;
+        min-width: 180px;
+      }
+      .jackpot-amount {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        height: 90px;
+        flex-direction: column;
+        padding: 10px 5%;
+      }
+      .game-title {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+      }
+      .jackpot-cylinder {
+        position: relative;
+        left: auto;
+        top: auto;
+        transform: none;
+        padding: 10px 24px;
+        min-width: 160px;
+        margin-top: 5px;
+      }
+      .jackpot-amount {
+        font-size: 1.5rem;
+      }
+      
+      .bottom-bar {
+        flex-direction: column;
+        padding: 10px;
+        position: relative;
+      }
+      
+      .left-section, .center-section, .right-section {
+        width: 100%;
+        justify-content: center;
+        margin: 5px 0;
+      }
+      
+      .win-cylinder {
+        margin: 10px 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        height: auto;
+        padding: 10px 5%;
+      }
+      .game-title {
+        font-size: 1.3rem;
+      }
+      .jackpot-cylinder {
+        padding: 8px 20px;
+        min-width: 140px;
+      }
+      .jackpot-label {
+        font-size: 0.8rem;
+      }
+      .jackpot-amount {
+        font-size: 1.2rem;
+      }
+      
+      .slot-machine-container {
+        width: 95%;
+        margin: 10px auto;
+      }
+      
+      .btn {
+        padding: 8px 12px;
+        font-size: 0.7rem;
+      }
+      
+      .spin::after {
+        font-size: 0.5rem;
+      }
+      
+      .play-section {
+        font-size: 0.7rem;
+        padding: 3px 5px;
+      }
+      
+      .lines-count {
+        font-size: 0.7rem;
+        padding: 5px;
+      }
+      
+      .win {
+        font-size: 1rem;
+        padding: 3px 8px;
+      }
+    }
+
+    @media (max-width: 350px) {
+      .game-title {
+        font-size: 1.1rem;
+      }
+      
+      .jackpot-cylinder {
+        padding: 6px 15px;
+        min-width: 120px;
+      }
+      
+      .jackpot-label {
+        font-size: 0.7rem;
+      }
+      
+      .jackpot-amount {
+        font-size: 1rem;
+      }
+      
+      .btn {
+        padding: 6px 8px;
+        font-size: 0.6rem;
+      }
+      
+      .spin::after {
+        font-size: 0.4rem;
+      }
     }
   </style>
 </head>
@@ -857,8 +904,8 @@
     </div>
   </div>
 
-  <audio id="winSound" src="https://www.soundjay.com/buttons/beep-01a.mp3" type="audio/mp3"></audio>
-  <audio id="spinSound" src="https://www.soundjay.com/mechanical/lever-01a.mp3" type="audio/mp3"></audio>
+  <audio id="winSound" src="you-win-sequence-3-183950.mp3" type="audio/mp3"></audio>
+  <audio id="spinSound" src="audiomass-output.mp3" type="audio/mp3"></audio>
   <audio id="reelStopSound" src="https://www.soundjay.com/mechanical/sounds/slot-machine-reel-stop-01.mp3" type="audio/mp3"></audio>
 
   <script>
@@ -1076,66 +1123,63 @@
 
     // Main spin function with improved animation
     function spin() {
-      if (state.isSpinning || state.userAmount < state.totalLines) return;
-      
-      state.isSpinning = true;
-      state.userAmount -= state.totalLines;
-      state.spinningReels = 9; // 3x3 grid
-      updateUI();
-      
-      // Reset win amount
-      elements.winAmount.textContent = `0 WIN`;
-      
-      // Play spin sound
-      elements.spinSound.currentTime = 0;
-      elements.spinSound.play().catch(error => console.log("Audio play failed:", error));
+  if (state.isSpinning || state.userAmount < state.totalLines) return;
+  
+  state.isSpinning = true;
+  state.userAmount -= state.totalLines;
+  state.spinningReels = 9; // 3x3 grid
+  updateUI();
+  
+  // Reset win amount
+  elements.winAmount.textContent = `0 WIN`;
+  
+  // Play spin sound
+  elements.spinSound.currentTime = 0;
+  elements.spinSound.play().catch(error => console.log("Audio play failed:", error));
 
-      // Start spinning animation for all reels
-      const reels = document.querySelectorAll('.reel-strip');
-      reels.forEach((reel, index) => {
-        // Initial setup
-        reel.style.transition = 'none';
-        reel.style.transform = 'translateY(0)';
-        reel.classList.add('spinning');
+  // Start spinning animation for all reels
+  const reels = document.querySelectorAll('.reel-strip');
+  reels.forEach((reel, index) => {
+    // Initial setup
+    reel.style.transition = 'none';
+    reel.style.transform = 'translateY(0)';
+    reel.classList.add('spinning');
+    
+    // After a short delay, set up the proper transition
+    setTimeout(() => {
+      reel.style.transition = `transform ${state.isFastSpin ? '1.5s' : '2.5s'} cubic-bezier(0.1, 0.7, 0.1, 1)`;
+      
+      // Calculate random stop position (multiple of symbol height)
+      const symbolHeight = reel.offsetHeight / 15; // Each symbol height
+      const reelHeight = reel.offsetHeight;
+      const randomOffset = Math.floor(Math.random() * 10) * symbolHeight;
+      const spinDistance = reelHeight + randomOffset;
+      
+      reel.style.transform = `translateY(-${spinDistance}px)`;
+      
+      // When this reel finishes spinning
+      setTimeout(() => {
+        reel.classList.remove('spinning');
         
-        // After a short delay, set up the proper transition
-        setTimeout(() => {
-          reel.style.transition = `transform ${state.isFastSpin ? '1.5s' : '2.5s'} cubic-bezier(0.1, 0.7, 0.1, 1)`;
-          
-          // Calculate random stop position (multiple of symbol height)
-          const symbolHeight = 100; // Each symbol is 100px tall
-          const reelHeight = reel.offsetHeight;
-          const randomOffset = Math.floor(Math.random() * 10) * symbolHeight;
-          const spinDistance = reelHeight + randomOffset;
-          
-          reel.style.transform = `translateY(-${spinDistance}px)`;
-          
-          // When this reel finishes spinning
-          setTimeout(() => {
-            reel.classList.remove('spinning');
-            
-            // Snap to nearest symbol
-            const currentPosition = parseInt(reel.style.transform.replace('translateY(', '').replace('px)', ''));
-            const snappedPosition = Math.round(currentPosition / symbolHeight) * symbolHeight;
-            const finalPosition = snappedPosition % reelHeight;
-            
-            reel.style.transition = 'transform 0.3s ease-out';
-            reel.style.transform = `translateY(${finalPosition}px)`;
-            
-            // Play reel stop sound
-            elements.reelStopSound.currentTime = 0;
-            elements.reelStopSound.play().catch(error => console.log("Audio play failed:", error));
-            
-            // Check if all reels have stopped
-            state.spinningReels--;
-            if (state.spinningReels === 0) {
-              checkWin();
-              state.isSpinning = false;
-            }
-          }, state.isFastSpin ? 1500 : 2500);
-        }, index * 100); // Stagger reel starts slightly
-      });
-    }
+        // Snap to nearest symbol
+        const currentPosition = parseInt(reel.style.transform.replace('translateY(', '').replace('px)', ''));
+        const snappedPosition = Math.round(currentPosition / symbolHeight) * symbolHeight;
+        const finalPosition = snappedPosition % reelHeight;
+        
+        reel.style.transition = 'transform 0.3s ease-out';
+        reel.style.transform = `translateY(${finalPosition}px)`;
+        
+        // Check if all reels have stopped
+        state.spinningReels--;
+        if (state.spinningReels === 0) {
+          elements.spinSound.pause(); // Stop the spinning sound when all reels stop
+          checkWin();
+          state.isSpinning = false;
+        }
+      }, state.isFastSpin ? 1500 : 2500);
+    }, index * 100); // Stagger reel starts slightly
+  });
+}    
 
     // Check for winning combinations
     function checkWin() {
