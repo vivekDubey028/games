@@ -217,9 +217,15 @@ class SlotMachine {
         this.spinBtn.disabled = true;
         
         // Start spinning animation
-        const spinDuration = this.fastMode ? 1000 : 2000;
-        const reelStopDelays = this.fastMode ? [300, 600, 900] : [500, 1000, 1500];
+        // const spinDuration = this.fastMode ? 2000 : 4000;
+        // const reelStopDelays = this.fastMode ? [600, 1200, 1800] : [1000, 2000, 3000];
         
+        const reelHeight = this.reels[0].offsetHeight; // Dynamic height
+        const spinDuration = this.fastMode ? 2000 : 4000;
+        const reelStopDelays = this.fastMode 
+            ? [600, 1200, 1800] 
+            : [Math.floor(spinDuration * 0.25), Math.floor(spinDuration * 0.5), spinDuration];
+
         this.reels.forEach((reel, index) => {
             reel.classList.add('spinning');
             setTimeout(() => {
@@ -228,6 +234,7 @@ class SlotMachine {
         });
         
         // Wait for all reels to finish
+        // const spinDuration =7000;
         await this.waitForSpinComplete(spinDuration);
         
         // Check for wins

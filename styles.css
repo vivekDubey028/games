@@ -490,7 +490,7 @@ body {
 }
 
 .reel.spinning .reel-inner {
-    animation: spinReel 2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: spinReel 4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
 @keyframes spinReel {
@@ -499,10 +499,35 @@ body {
     100% { transform: translateY(calc(-100% + 330px)); filter: blur(0px); }
 }
 
+@keyframes spinReel1 {
+    0% { transform: translateY(0); filter: blur(0px); }
+    50% { filter: blur(4px); }
+    100% { transform: translateY(calc(-100% + 330px)); filter: blur(0px); }
+}
+
+@keyframes spinReel2 {
+    0% { transform: translateY(0); filter: blur(0px); }
+    50% { filter: blur(4px); }
+    100% { transform: translateY(calc(-100% + 330px)); filter: blur(0px); }
+}
+
+@keyframes spinReel3 {
+    0% { transform: translateY(0); filter: blur(0px); }
+    50% { filter: blur(4px); }
+    100% { transform: translateY(calc(-100% + 330px)); filter: blur(0px); }
+}
+
 /* Staggered Spin for Each Reel */
-.reel:nth-child(1) .reel-inner { animation-delay: 0s; }
-.reel:nth-child(2) .reel-inner { animation-delay: 0.2s; }
-.reel:nth-child(3) .reel-inner { animation-delay: 0.4s; }
+.reel:nth-child(1).spinning .reel-inner {
+    animation: spinReel1 5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.reel:nth-child(2).spinning .reel-inner {
+    animation: spinReel2 6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+.reel:nth-child(3).spinning .reel-inner {
+    animation: spinReel3 7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
 .spin-btn.spinning {
     background: linear-gradient(145deg, #ffaa44, #ff8822);
     animation: spinPulse 0.5s ease-in-out infinite;
