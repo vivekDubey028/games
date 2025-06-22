@@ -1,1196 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3x3 Slot Machine</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <style>
-    /* Full-page layout to center the game */
-    body,
-    html {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(#0000FF, #0096FF);
-      background-size: cover;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
-
-    /* Luxurious Header Styles */
-    header {
-      width: 100%;
-      height: 10vh;
-      min-height: 100px;
-      max-height: 120px;
-      background: linear-gradient(115deg, #111827 0%, #00A36C 50%, #111827 100%);
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      position: relative;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 5%;
-      border-bottom: 1px solid rgba(250, 204, 21, 0.2);
-    }
-
-    /* Shine effect on header */
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent 0%, rgba(250, 204, 21, 0.6) 50%, #00A36C, transparent 100%);
-    }
-
-    /* Game Title - Retro Glam */
-    .game-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1.3rem, 4vw, 2.2rem);
-      font-weight: 700;
-      color: #facc15;
-      text-shadow: 0 0 10px rgba(250, 204, 21, 0.7), 0 0 20px rgba(250, 204, 21, 0.4), 2px 2px 0 #000;
-      letter-spacing: 2px;
-      position: relative;
-      z-index: 10;
-    }
-
-    .game-title::after {
-      content: '™';
-      font-size: clamp(0.6rem, 1.5vw, 1rem);
-      vertical-align: super;
-      margin-left: 5px;
-    }
-
-    /* Jackpot Cylinder - Center Stage */
-    .jackpot-cylinder {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      background: radial-gradient(circle at center, #facc15 0%, #eab308 60%, #d97706 100%);
-      padding: clamp(8px, 2vw, 16px) clamp(20px, 5vw, 40px);
-      border-radius: 50px;
-      box-shadow: 0 0 20px rgba(250, 204, 21, 0.8), inset 0 4px 10px rgba(255, 215, 0, 0.6), inset 0 -4px 10px rgba(185, 119, 0, 0.6), 0 6px 0 rgba(139, 92, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid #fff;
-      min-width: clamp(120px, 20vw, 200px);
-      z-index: 20;
-      animation: pulse-glow 3s infinite alternate;
-    }
-
-    /* 3D Bevel Effect */
-    .jackpot-cylinder::before {
-      content: '';
-      position: absolute;
-      top: 4px;
-      left: 4px;
-      right: 4px;
-      bottom: 4px;
-      border-radius: 46px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
-      pointer-events: none;
-    }
-
-    /* Inner metallic shine */
-    .jackpot-cylinder::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
-      border-radius: 48px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
-      pointer-events: none;
-    }
-
-    .jackpot-label {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(0.7rem, 1.5vw, 1rem);
-      font-weight: 700;
-      color: #111;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
-    }
-
-    .jackpot-amount {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(1rem, 3vw, 2rem);
-      font-weight: 700;
-      color: #111;
-      text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4), 0 0 10px rgba(255, 215, 0, 0.8);
-      letter-spacing: 1px;
-    }
-
-    /* Sparkle Animation */
-    .sparkle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: white;
-      border-radius: 50%;
-      pointer-events: none;
-      opacity: 0;
-      box-shadow: 0 0 8px 2px white;
-      animation: sparkle 2s infinite;
-    }
-
-    @keyframes sparkle {
-      0% { transform: scale(0); opacity: 0; }
-      50% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(0); opacity: 0; }
-    }
-
-    @keyframes pulse-glow {
-      0% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.8); }
-      50% { box-shadow: 0 0 30px rgba(250, 204, 21, 1); }
-      100% { box-shadow: 0 0 20px rgba(250, 204, 21, 0.8); }
-    }
-
-    /* Slot machine main container centered on the screen */
-    .slot-machine-container {
-      position: relative;
-      background: linear-gradient(145deg, #d1d5db, #9ca3af);
-      padding: 0;
-      border-radius: 8px;
-      border: 3px solid #f7ef8a;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4), inset 0 2px 0 #f7ef8a, inset 0 -2px 0 rgba(0, 0, 0, 0.3);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: clamp(6px, 2vw, 12px);
-      width: clamp(300px, 80vw, 500px);
-      height: auto;
-      aspect-ratio: 1/1;
-      max-height: 70vh;
-      overflow: hidden;
-      margin: clamp(10px, 5vw, 20px) auto;
-      box-sizing: border-box;
-    }
-
-    /* Each slot panel */
-    .slot-panel {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* Outer panel frame with shine and border */
-    .panel-frame {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #f3f4f6, #e5e7eb, #d1d5db);
-      border-radius: 4px;
-      padding: clamp(3px, 1vw, 6px);
-      position: relative;
-      border: 3px solid #f7ef8a;
-      margin: 1px;
-      clip-path: polygon(6px 0%, 47% 0%, 47% 3px, 53% 3px, 53% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 47%, 97% 47%, 97% 53%, 100% 53%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 53% 100%, 53% 97%, 47% 97%, 47% 100%, 6px 100%, 0% calc(100% - 6px), 0% 53%, 3px 53%, 3px 47%, 0% 47%, 0% 6px);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3), inset 2px 2px 4px rgba(255, 255, 255, 0.8), inset -2px -2px 4px rgba(107, 114, 128, 0.6), 0 0 0 1px rgba(75, 85, 99, 0.4);
-      transition: all 0.15s ease;
-    }
-
-    .panel-frame:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4), inset 2px 2px 4px #f7ef8a, inset -2px -2px 4px rgba(107, 114, 128, 0.7), 0 0 0 1px rgba(75, 85, 99, 0.5);
-    }
-
-    /* Inner screen */
-    .panel-screen {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #4b5563, #374151, #1f2937);
-      border-radius: 2px;
-      border: 2px solid #374151;
-      clip-path: polygon(6px 0%, 47% 0%, 47% 3px, 53% 3px, 53% 0%, calc(100% - 6px) 0%, 100% 6px, 100% 47%, 97% 47%, 97% 53%, 100% 53%, 100% calc(100% - 6px), calc(100% - 6px) 100%, 53% 100%, 53% 97%, 47% 97%, 47% 100%, 6px 100%, 0% calc(100% - 6px), 0% 53%, 3px 53%, 3px 47%, 0% 47%, 0% 6px);
-      box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.8), inset 2px 2px 4px rgba(31, 41, 55, 0.6), inset -1px -1px 2px rgba(0, 0, 0, 0.9);
-    }
-
-    /* Slot screen content area */
-    .screen-content {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(ellipse at center, rgba(75, 85, 99, 0.6) 0%, rgba(31, 41, 55, 0.9) 50%, rgba(17, 24, 39, 1) 80%);
-      border-radius: 2px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Improved spinning effect */
-    .reel-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      perspective: 500px;
-    }
-
-    .reel-strip {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: transform 2.5s cubic-bezier(0.1, 0.7, 0.1, 1);
-    }
-
-    .reel-strip.spinning {
-      animation: reelSpin 0.08s steps(3, end) infinite;
-    }
-
-    @keyframes reelSpin {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-300px); }
-    }
-
-    .reel-symbol {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .reel-symbol img {
-      width: 80%;
-      height: 80%;
-      object-fit: contain;
-      filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-      animation: symbolGlow 3s ease-in-out infinite alternate;
-    }
-
-    @keyframes symbolGlow {
-      from {
-        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
-      }
-      to {
-        filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
-      }
-    }
-
-    /* Screen scanline effect */
-    .screen-content::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 50%, transparent 100%);
-      animation: scanline 4s linear infinite;
-    }
-
-    @keyframes scanline {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
-    /* Inner glossy shine effect */
-    .panel-frame::after {
-      content: '';
-      position: absolute;
-      top: 2px;
-      left: 2px;
-      right: 2px;
-      bottom: 2px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(243, 244, 246, 0.3) 30%, rgba(209, 213, 219, 0.2) 60%, rgba(156, 163, 175, 0.3) 100%);
-      border-radius: 2px;
-      pointer-events: none;
-      opacity: 0.6;
-      clip-path: polygon(4px 0%, 46% 0%, 46% 3px, 54% 3px, 54% 0%, calc(100% - 4px) 0%, 100% 4px, 100% 46%, 97% 46%, 97% 54%, 100% 54%, 100% calc(100% - 4px), calc(100% - 4px) 100%, 54% 100%, 54% 97%, 46% 97%, 46% 100%, 4px 100%, 0% calc(100% - 4px), 0% 54%, 3px 54%, 3px 46%, 0% 46%, 0% 4px);
-    }
-
-    /* Winning line animation */
-    .winning-line {
-      position: absolute;
-      background: linear-gradient(90deg, transparent, #ffeb3b, transparent);
-      height: 6px;
-      z-index: 10;
-      animation: winFlash 1s infinite alternate;
-    }
-
-    @keyframes winFlash {
-      0% { opacity: 0.3; }
-      100% { opacity: 1; }
-    }
-
-    /* Bottom Bar Styles */
-    .bottom-bar {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      background: linear-gradient(115deg, #111827 0%, #00A36C 50%, #111827 100%);
-      padding: clamp(5px, 2vw, 10px) clamp(10px, 5vw, 20px);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: white;
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
-      border-top: 2px solid #000080;
-      z-index: 10;
-    }
-
-    .left-section, .center-section, .right-section {
-      display: flex;
-      align-items: center;
-      gap: clamp(5px, 1vw, 10px);
-    }
-
-    .left-section {
-      flex: 1;
-    }
-
-    .center-section {
-      flex: 1;
-      justify-content: center;
-    }
-
-    .right-section {
-      flex: 1;
-      justify-content: flex-end;
-      margin-right: clamp(10px, 5vw, 30px);
-    }
-
-    .btn {
-      padding: clamp(5px, 1.5vw, 10px) clamp(7px, 2vw, 15px);
-      margin: 0 clamp(2px, 0.5vw, 5px);
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      text-transform: uppercase;
-      transition: all 0.2s ease;
-      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .win {
-      font-size: clamp(0.8rem, 2vw, 1.2rem);
-      font-weight: bold;
-      color: #ffd700;
-      padding: clamp(3px, 1vw, 5px) clamp(5px, 2vw, 10px);
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .fast {
-      background: #ff3333;
-      color: white;
-    }
-
-    .spin {
-      background-color: #00cc66;
-      color: white;
-    }
-
-    .spin::after {
-      content: "HOLD FOR AUTOSPIN";
-      display: block;
-      font-size: clamp(0.4rem, 1vw, 0.6rem);
-      font-weight: normal;
-      margin-top: 2px;
-    }
-
-    .play-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #004d99;
-      border-radius: 10px;
-      padding: clamp(3px, 1vw, 5px) clamp(4px, 1.5vw, 8px);
-      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-    }
-
-    .play-section span {
-      color: #adff2f;
-      font-weight: bold;
-      margin: clamp(2px, 0.5vw, 3px) 0;
-      white-space: nowrap;
-    }
-
-    .play-section .amount {
-      color: white;
-      margin: 0 clamp(2px, 0.5vw, 3px);
-    }
-
-    .lines-count {
-      background: #004d99;
-      border-radius: 10px;
-      padding: clamp(5px, 1.5vw, 8px);
-      color: #adff2f;
-      font-weight: bold;
-      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-      white-space: nowrap;
-    }
-
-    .win-cylinder {
-      position: relative;
-      background: radial-gradient(circle at center, #facc15 0%, #eab308 60%, #d97706 100%);
-      padding: clamp(5px, 1.5vw, 8px) clamp(10px, 3vw, 20px);
-      border-radius: 50px;
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.8), inset 0 4px 8px rgba(255, 215, 0, 0.6), inset 0 -4px 8px rgba(185, 119, 0, 0.6), 0 4px 0 rgba(139, 92, 0, 0.4);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid #fff;
-      min-width: clamp(100px, 15vw, 120px);
-    }
-
-    .win-cylinder::before {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      right: 3px;
-      bottom: 3px;
-      border-radius: 46px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 50%);
-      pointer-events: none;
-    }
-
-    .win-cylinder::after {
-      content: '';
-      position: absolute;
-      top: 1px;
-      left: 1px;
-      right: 1px;
-      bottom: 1px;
-      border-radius: 48px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.3) 100%);
-      pointer-events: none;
-    }
-
-    /* Loader Styles */
-    .loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.8);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      opacity: 1;
-      transition: opacity 0.5s ease;
-    }
-
-    .loader.hidden {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .loader-image {
-      width: clamp(80px, 15vw, 100px);
-      height: clamp(80px, 15vw, 100px);
-      background: url('https://img.icons8.com/?size=100&id=18041&format=png&color=000000') no-repeat center;
-      background-size: contain;
-      margin-bottom: clamp(10px, 2vw, 15px);
-    }
-
-    .loader-progress {
-      width: clamp(120px, 20vw, 150px);
-      height: clamp(10px, 2vw, 15px);
-      background: #333;
-      border-radius: 8px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .loader-bar {
-      width: 0;
-      height: 100%;
-      background: linear-gradient(90deg, #ffeb3b, #ff9800);
-      animation: loading 2s infinite linear;
-      border-radius: 8px;
-    }
-
-    @keyframes loading {
-      0% { width: 0; }
-      100% { width: 100%; }
-    }
-
-    .loader-text {
-      font-family: 'Orbitron', sans-serif;
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
-      color: #ffeb3b;
-      text-shadow: 0 0 8px #ffeb3b, 0 0 16px #ff9800, 0 0 24px #f44336;
-      margin-top: clamp(10px, 2vw, 15px);
-    }
-
-    /* 3D Button Styles for Fast and Spin */
-    .fast, .spin {
-      position: relative;
-      padding: clamp(5px, 1.5vw, 8px) clamp(10px, 2vw, 15px);
-      margin: 0 clamp(2px, 0.5vw, 3px);
-      border-radius: 8px;
-      font-weight: bold;
-      font-family: 'Orbitron', sans-serif;
-      cursor: pointer;
-      text-transform: uppercase;
-      transition: all 0.2s ease;
-      overflow: hidden;
-      font-size: clamp(0.6rem, 1.5vw, 0.8rem);
-    }
-
-    .fast::before, .spin::before {
-      content: '';
-      position: absolute;
-      top: 3px;
-      left: 3px;
-      right: 3px;
-      bottom: 3px;
-      border-radius: 5px;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
-      z-index: 1;
-    }
-
-    .fast::after, .spin::after {
-      content: '';
-      position: absolute;
-      top: 10%;
-      left: 10%;
-      width: 80%;
-      height: 80%;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 70%);
-      border-radius: 5px;
-      z-index: 2;
-      opacity: 0.6;
-    }
-
-    .fast {
-      background: linear-gradient(135deg, #ff4d4d, #cc0000);
-      border: 2px solid #ff6666;
-      color: white;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.3), inset 0 -2px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    .fast:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5), inset 0 3px 5px rgba(255, 255, 255, 0.4), inset 0 -3px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    .fast:active {
-      transform: translateY(1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 3px 4px rgba(255, 255, 255, 0.2);
-      background: linear-gradient(135deg, #cc0000, #990000);
-    }
-
-    .spin {
-      background: linear-gradient(135deg, #00cc66, #00994d);
-      border: 2px solid #00ff80;
-      color: white;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4), inset 0 2px 3px rgba(255, 255, 255, 0.3), inset 0 -2px 3px rgba(0, 0, 0, 0.2);
-    }
-
-    .spin:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.5), inset 0 3px 5px rgba(255, 255, 255, 0.4), inset 0 -3px 5px rgba(0, 0, 0, 0.3);
-    }
-
-    .spin:active {
-      transform: translateY(1px);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 2px rgba(0, 0, 0, 0.4), inset 0 3px 4px rgba(255, 255, 255, 0.2);
-      background: linear-gradient(135deg, #00994d, #006633);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      header {
-        height: auto;
-        flex-direction: column;
-        padding: clamp(5px, 2vw, 10px) 5%;
-      }
-      .game-title {
-        margin-bottom: clamp(5px, 1vw, 10px);
-      }
-      .jackpot-cylinder {
-        position: relative;
-        left: auto;
-        top: auto;
-        transform: none;
-        margin-top: clamp(5px, 1vw, 10px);
-      }
-      
-      .bottom-bar {
-        flex-direction: column;
-        padding: clamp(5px, 2vw, 10px);
-        position: relative;
-      }
-      
-      .left-section, .center-section, .right-section {
-        width: 100%;
-        justify-content: center;
-        margin: clamp(5px, 1vw, 10px) 0;
-      }
-      
-      .win-cylinder {
-        margin: clamp(5px, 1vw, 10px) 0;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .slot-machine-container {
-        width: 90%;
-        margin: clamp(5px, 2vw, 10px) auto;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine Game</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="loader">
-    <div class="loader-image"></div>
-    <div class="loader-progress">
-      <div class="loader-bar"></div>
-    </div>
-    <div class="loader-text">DOWNLOADING...</div>
-  </div>
-
-  <header>
-    <h1 class="game-title">LUCKY SLOTS</h1>
-    
-    <div class="jackpot-cylinder" id="jackpotCylinder">
-      <span class="jackpot-label">GRANDS</span>
-      <span class="jackpot-amount" id="userAmount">$1000</span>
-    </div>
-    
-    <!-- Empty div for potential right-side elements -->
-    <div></div>
-  </header>
-
-  <div class="slot-machine-container" id="slotMachine">
-    <!-- Row 1 -->
-    <div class="slot-panel" data-row="0" data-col="0">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-0-0">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/emoji/96/cherries.png" alt="Cherry" data-symbol="cherry">
+    <!-- Screen Loader -->
+    <div class="screen-loader" id="screenLoader">
+        <div class="loader-container">
+            <div class="slot-loader">
+                <div class="loader-reel">
+                    <div class="loader-symbol">🍎</div>
+                    <div class="loader-symbol">🍒</div>
+                    <div class="loader-symbol">🍋</div>
+                    <div class="loader-symbol">7</div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slot-panel" data-row="0" data-col="1">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-0-1">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/emoji/96/tangerine.png" alt="Orange" data-symbol="orange">
+                <div class="loader-reel">
+                    <div class="loader-symbol">🍊</div>
+                    <div class="loader-symbol">🔔</div>
+                    <div class="loader-symbol">🍇</div>
+                    <div class="loader-symbol">7</div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slot-panel" data-row="0" data-col="2">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-0-2">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/?size=100&id=lCQ1YNBkdOcR&format=png&color=000000" alt="7" data-symbol="7">
+                <div class="loader-reel">
+                    <div class="loader-symbol">🍒</div>
+                    <div class="loader-symbol">🍎</div>
+                    <div class="loader-symbol">🔔</div>
+                    <div class="loader-symbol">7</div>
                 </div>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 2 -->
-    <div class="slot-panel" data-row="1" data-col="0">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-1-0">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/emoji/96/lemon.png" alt="Lemon" data-symbol="lemon">
+            <div class="loader-text">
+                <div class="loading-title">SLOT MACHINE</div>
+                <div class="loading-subtitle">Loading Game...</div>
+                <div class="loading-progress">
+                    <div class="progress-bar"></div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-    <div class="slot-panel" data-row="1" data-col="1">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-1-1">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/?size=100&id=RCFpEF2O1xdZ&format=png&color=000000" alt="Grapes" data-symbol="grapes">
+
+    <div class="game-container">
+        <!-- Header with existing UI -->
+        <div class="game-header">
+            <div class="retro-panel coins-display">
+                <div class="coin-icon">$</div>
+                <div class="coin-count" id="coinCount">1,250</div>
+            </div>
+            <div class="retro-panel mini-display">
+                <div class="mini-text">JACKPOT</div>
+                <div class="mini-amount" id="jackpotAmount">$5,250</div>
+            </div>
+            <div class="menu-button">
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+                <div class="menu-line"></div>
+            </div>
+        </div>
+
+        <!-- Main Game Content -->
+        <div class="game-content">
+            <!-- Paylines Display -->
+            <div class="paylines-display">
+                <div class="payline-item active" data-line="1">
+                    <span class="line-number">1</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slot-panel" data-row="1" data-col="2">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-1-2">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/?size=100&id=qsamHkjVPQf3&format=png&color=000000" alt="Watermelon" data-symbol="watermelon">
+                <div class="payline-item active" data-line="2">
+                    <span class="line-number">2</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Row 3 -->
-    <div class="slot-panel" data-row="2" data-col="0">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-2-0">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/emoji/96/star-emoji.png" alt="Star" data-symbol="star">
+                <div class="payline-item active" data-line="3">
+                    <span class="line-number">3</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slot-panel" data-row="2" data-col="1">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-2-1">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/?size=100&id=18041&format=png&color=000000" alt="Strawberry" data-symbol="strawberry">
+                <div class="payline-item active" data-line="4">
+                    <span class="line-number">4</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="slot-panel" data-row="2" data-col="2">
-      <div class="panel-frame">
-        <div class="panel-screen">
-          <div class="screen-content">
-            <div class="reel-container">
-              <div class="reel-strip" id="reel-2-2">
-                <div class="reel-symbol">
-                  <img src="https://img.icons8.com/emoji/96/gem-stone.png" alt="Diamond" data-symbol="diamond">
+                <div class="payline-item active" data-line="5">
+                    <span class="line-number">5</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
                 </div>
-              </div>
+                <div class="payline-item" data-line="6">
+                    <span class="line-number">6</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
+                </div>
+                <div class="payline-item" data-line="7">
+                    <span class="line-number">7</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
+                </div>
+                <div class="payline-item" data-line="8">
+                    <span class="line-number">8</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
+                </div>
+                <div class="payline-item" data-line="9">
+                    <span class="line-number">9</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
+                </div>
+                <div class="payline-item" data-line="10">
+                    <span class="line-number">10</span>
+                    <span class="line-divider">|</span>
+                    <span class="line-bet">10</span>
+                </div>
             </div>
-          </div>
+
+            <!-- Slot Machine Reels -->
+            <div class="slot-machine">
+                <!-- Winning Coins Animation -->
+                <div class="winning-coins" id="winningCoins"></div>
+                
+                <!-- Paylines Overlay -->
+                <div class="paylines-overlay">
+                    <div class="payline payline-1" data-positions="1,1,1"></div>
+                    <div class="payline payline-2" data-positions="0,0,0"></div>
+                    <div class="payline payline-3" data-positions="2,2,2"></div>
+                    <div class="payline payline-4" data-positions="0,1,2"></div>
+                    <div class="payline payline-5" data-positions="2,1,0"></div>
+                    <div class="payline payline-6" data-positions="1,0,1"></div>
+                    <div class="payline payline-7" data-positions="1,2,1"></div>
+                    <div class="payline payline-8" data-positions="0,0,1"></div>
+                    <div class="payline payline-9" data-positions="2,2,1"></div>
+                    <div class="payline payline-10" data-positions="0,2,2"></div>
+                </div>
+                
+                <div class="reel-container">
+                    <div class="reel" id="reel1">
+                        <div class="symbol-row" data-position="0">
+                            <div class="symbol-box">
+                                <div class="symbol seven-red">7</div>
+                            </div>
+                        </div>
+                        <div class="symbol-row" data-position="1">
+                            <div class="symbol-box">
+                                <div class="symbol apple">🍎</div>
+                            </div>
+                        </div>
+                        <div class="symbol-row" data-position="2">
+                            <div class="symbol-box">
+                                <div class="symbol cherry">🍒</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reel" id="reel2">
+                        <div class="symbol-row" data-position="0">
+                            <div class="symbol-box">
+                                <div class="symbol bell">🔔</div>
+                            </div>
+                        </div>
+                        <div class="symbol-row" data-position="1">
+                            <div class="symbol-box">
+                                <div class="symbol seven-blue">7</div>
+                            </div>
+                        </div>
+                        <div class="symbol-row" data-position="2">
+                            <div class="symbol-box">
+                                <div class="symbol orange">🍊</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="reel" id="reel3">
+                        <div class="symbol-row" data-position="0">
+                            <div class="symbol-box">
+                                <div class="symbol grape">🍇</div>
+                            </div>
+                        </div>
+                        <div class="symbol-row" data-position="1">
+                            <div class="symbol-box">
+                                <div class="symbol lemon">🍋</div>
+                            </div>
+                        </div>
+                        <div class="symbol-row" data-position="2">
+                            <div class="symbol-box">
+                                <div class="symbol bar">BAR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
 
-  <div class="bottom-bar">
-    <div class="left-section">
-      <div class="lines-count">8 LINES</div>
-      <div class="play-section">
-        <span>LINE PLAY: <span class="amount" id="linePlayAmt">1</span></span>
-        <span>TOTAL LINES: <span class="amount" id="totalLinesAmt">1</span></span>
-      </div>
-      <div>
-        <button class="btn" onclick="adjustLines(1)">+</button>
-        <button class="btn" onclick="adjustLines(-1)">-</button>
-      </div>
-    </div>
-    <div class="center-section">
-      <div class="win-cylinder">
-        <span class="win" id="winAmount">0 WIN</span>
-      </div>
-    </div>
-    <div class="right-section">
-      <button class="btn fast" onclick="toggleFastSpin()">FAST</button>
-      <button class="btn spin" onmousedown="startAutoSpin()" onmouseup="stopAutoSpin()" onmouseleave="stopAutoSpin()">SPIN & Hold to AutoSpin</button>
-    </div>
-  </div>
-
-  <audio id="winSound" src="you-win-sequence-3-183950.mp3" type="audio/mp3"></audio>
-  <audio id="spinSound" src="audiomass-output.mp3" type="audio/mp3"></audio>
-  <audio id="reelStopSound" src="https://www.soundjay.com/mechanical/sounds/slot-machine-reel-stop-01.mp3" type="audio/mp3"></audio>
-
-  <script>
-    // Game configuration
-    const config = {
-      minBet: 1,
-      maxLines: 8,
-      initialAmount: 1000,
-      spinDuration: {
-        normal: 2500,
-        fast: 1500
-      },
-      symbols: {
-        cherry: { 
-          image: 'https://img.icons8.com/emoji/96/cherries.png',
-          payout: 10
-        },
-        orange: { 
-          image: 'https://img.icons8.com/emoji/96/tangerine.png',
-          payout: 15
-        },
-        '7': { 
-          image: 'https://img.icons8.com/?size=100&id=lCQ1YNBkdOcR&format=png&color=000000',
-          payout: 100
-        },
-        lemon: { 
-          image: 'https://img.icons8.com/emoji/96/lemon.png',
-          payout: 20
-        },
-        grapes: { 
-          image: 'https://img.icons8.com/?size=100&id=RCFpEF2O1xdZ&format=png&color=000000',
-          payout: 25
-        },
-        watermelon: { 
-          image: 'https://img.icons8.com/?size=100&id=qsamHkjVPQf3&format=png&color=000000',
-          payout: 30
-        },
-        star: { 
-          image: 'https://img.icons8.com/emoji/96/star-emoji.png',
-          payout: 50
-        },
-        strawberry: { 
-          image: 'https://img.icons8.com/?size=100&id=18041&format=png&color=000000',
-          payout: 40
-        },
-        diamond: { 
-          image: 'https://img.icons8.com/emoji/96/gem-stone.png',
-          payout: 75
-        }
-      },
-      reelStrip: [
-        'cherry', 'orange', '7', 'lemon', 'grapes', 'watermelon', 'star', 'strawberry', 'diamond',
-        'cherry', '7', 'lemon', 'grapes', '7', 'watermelon', 'star', 'diamond'
-      ],
-      winningLines: [
-        // Horizontal
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        // Vertical
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        // Diagonal
-        [0, 4, 8],
-        [2, 4, 6]
-      ]
-    };
-
-    // Game state
-    const state = {
-      linePlay: 1,
-      totalLines: 1,
-      userAmount: config.initialAmount,
-      isSpinning: false,
-      autoSpinInterval: null,
-      isFastSpin: false,
-      spinningReels: 0
-    };
-
-    // DOM elements
-    const elements = {
-      userAmount: document.getElementById('userAmount'),
-      linePlayAmt: document.getElementById('linePlayAmt'),
-      totalLinesAmt: document.getElementById('totalLinesAmt'),
-      winAmount: document.getElementById('winAmount'),
-      spinBtn: document.querySelector('.spin'),
-      fastBtn: document.querySelector('.fast'),
-      winSound: document.getElementById('winSound'),
-      spinSound: document.getElementById('spinSound'),
-      reelStopSound: document.getElementById('reelStopSound'),
-      jackpotCylinder: document.getElementById('jackpotCylinder'),
-      slotMachine: document.getElementById('slotMachine')
-    };
-
-    // Initialize the game
-    function init() {
-      updateUI();
-      createSparkleEffects();
-      setupEventListeners();
-    }
-
-    // Update all UI elements based on game state
-    function updateUI() {
-      elements.userAmount.textContent = `$${state.userAmount}`;
-      elements.linePlayAmt.textContent = state.linePlay;
-      elements.totalLinesAmt.textContent = state.totalLines;
-    }
-
-    // Create sparkle effects for the jackpot cylinder
-    function createSparkleEffects() {
-      function createSparkle() {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        
-        const x = Math.random() * 80 + 10;
-        const y = Math.random() * 80 + 10;
-        
-        sparkle.style.left = `${x}%`;
-        sparkle.style.top = `${y}%`;
-        sparkle.style.animationDelay = `${Math.random() * 2}s`;
-        
-        elements.jackpotCylinder.appendChild(sparkle);
-        
-        setTimeout(() => {
-          sparkle.remove();
-        }, 2000);
-      }
-      
-      for (let i = 0; i < 5; i++) {
-        setTimeout(createSparkle, i * 400);
-      }
-      
-      setInterval(() => {
-        if (Math.random() > 0.7) {
-          createSparkle();
-        }
-      }, 300);
-    }
-
-    // Setup event listeners
-    function setupEventListeners() {
-      elements.spinBtn.addEventListener('click', spin);
-      window.addEventListener('load', () => {
-        const loader = document.querySelector('.loader');
-        setTimeout(() => {
-          loader.classList.add('hidden');
-        }, 2000);
-      });
-    }
-
-    // Adjust number of lines to play
-    function adjustLines(change) {
-      state.linePlay += change;
-      if (state.linePlay < config.minBet) state.linePlay = config.minBet;
-      if (state.linePlay > config.maxLines) state.linePlay = config.maxLines;
-      updateTotalLines();
-      updateUI();
-    }
-
-    // Update total lines based on line play
-    function updateTotalLines() {
-      state.totalLines = state.linePlay;
-      if (state.totalLines < config.minBet) state.totalLines = config.minBet;
-      if (state.totalLines > config.maxLines) state.totalLines = config.maxLines;
-    }
-
-    // Toggle fast spin mode
-    function toggleFastSpin() {
-      state.isFastSpin = !state.isFastSpin;
-      elements.fastBtn.style.background = state.isFastSpin 
-        ? 'linear-gradient(135deg, #ff6666, #cc0000)' 
-        : 'linear-gradient(135deg, #ff4d4d, #cc0000)';
-      elements.fastBtn.textContent = state.isFastSpin ? 'FAST ON' : 'FAST';
-    }
-
-    // Start auto spin when button is held
-    function startAutoSpin() {
-      if (state.isSpinning || state.userAmount < state.totalLines) return;
-      state.autoSpinInterval = setInterval(
-        spin, 
-        (state.isFastSpin ? config.spinDuration.fast : config.spinDuration.normal) + 200
-      );
-    }
-
-    // Stop auto spin
-    function stopAutoSpin() {
-      if (state.autoSpinInterval) {
-        clearInterval(state.autoSpinInterval);
-        state.autoSpinInterval = null;
-      }
-    }
-
-    // Main spin function with improved animation
-    function spin() {
-      if (state.isSpinning || state.userAmount < state.totalLines) return;
-      
-      state.isSpinning = true;
-      state.userAmount -= state.totalLines;
-      state.spinningReels = 9; // 3x3 grid
-      updateUI();
-      
-      // Reset win amount
-      elements.winAmount.textContent = `0 WIN`;
-      
-      // Play spin sound
-      elements.spinSound.currentTime = 0;
-      elements.spinSound.play().catch(error => console.log("Audio play failed:", error));
-
-      // Start spinning animation for all reels
-      const reels = document.querySelectorAll('.reel-strip');
-      reels.forEach((reel, index) => {
-        // Initial setup
-        reel.style.transition = 'none';
-        reel.style.transform = 'translateY(0)';
-        reel.classList.add('spinning');
-        
-        // After a short delay, set up the proper transition
-        setTimeout(() => {
-          reel.style.transition = `transform ${state.isFastSpin ? '1.5s' : '2.5s'} cubic-bezier(0.1, 0.7, 0.1, 1)`;
-          
-          // Calculate random stop position
-          const symbolHeight = reel.querySelector('.reel-symbol').offsetHeight;
-          const reelHeight = reel.offsetHeight;
-          const randomOffset = Math.floor(Math.random() * 10) * symbolHeight;
-          const spinDistance = reelHeight + randomOffset;
-          
-          reel.style.transform = `translateY(-${spinDistance}px)`;
-          
-          // When this reel finishes spinning
-          setTimeout(() => {
-            reel.classList.remove('spinning');
+        <!-- Bottom Interface -->
+        <div class="game-interface">
+            <div class="lines-section">
+                <div class="lines-display">
+                    <div class="lines-number" id="linesNumber">5</div>
+                    <div class="lines-label">LINES</div>
+                </div>
+                <div class="play-controls">
+                    <div class="play-item">
+                        <span class="play-label">TOTAL BET</span>
+                        <span class="play-value" id="totalBet">50.00</span>
+                        <div class="control-buttons">
+                            <button class="control-btn" data-action="total-bet-up">+</button>
+                            <button class="control-btn" data-action="total-bet-down">-</button>
+                        </div>
+                    </div>
+                    <div class="play-item">
+                        <span class="play-label">LINE BET</span>
+                        <span class="play-value" id="lineBet">10.00</span>
+                        <div class="control-buttons">
+                            <button class="control-btn" data-action="line-bet-up">+</button>
+                            <button class="control-btn" data-action="line-bet-down">-</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             
-            // Snap to single symbol and update with a new random symbol
-            const currentPosition = parseInt(reel.style.transform.replace('translateY(', '').replace('px)', ''));
-            const snappedPosition = Math.round(currentPosition / symbolHeight) * symbolHeight;
-            const finalPosition = snappedPosition % reelHeight;
+            <div class="win-section">
+                <div class="win-display">
+                    <div class="win-amount" id="winAmount">0.00</div>
+                    <div class="win-label">WIN</div>
+                </div>
+            </div>
             
-            reel.style.transition = 'transform 0.3s ease-out';
-            reel.style.transform = `translateY(${finalPosition}px)`;
-            
-            // Update the image with a new random symbol
-            const randomSymbol = config.reelStrip[Math.floor(Math.random() * config.reelStrip.length)];
-            const imgElement = reel.querySelector('img');
-            imgElement.src = config.symbols[randomSymbol].image;
-            imgElement.alt = randomSymbol;
-            imgElement.setAttribute('data-symbol', randomSymbol);
-            
-            // Play reel stop sound
-            elements.reelStopSound.currentTime = 0;
-            elements.reelStopSound.play().catch(error => console.log("Audio play failed:", error));
-            
-            // Check if all reels have stopped
-            state.spinningReels--;
-            if (state.spinningReels === 0) {
-              elements.spinSound.pause(); // Stop the spinning sound when all reels stop
-              checkWin();
-              state.isSpinning = false;
-            }
-          }, state.isFastSpin ? 1500 : 2500);
-        }, index * 100); // Stagger reel starts slightly
-      });
-    }
+            <div class="action-section">
+                <button class="fast-btn" id="fastBtn">
+                    <div class="fast-text">FAST</div>
+                </button>
+                <button class="spin-btn" id="spinBtn">
+                    <div class="spin-text">SPIN</div>
+                    <div class="autoplay-text">AUTOPLAY</div>
+                </button>
+            </div>
+        </div>
+    </div>
 
-    // Check for winning combinations
-    function checkWin() {
-      const reels = document.querySelectorAll('.reel-strip');
-      const grid = [
-        [
-          reels[0].querySelector('.reel-symbol img').getAttribute('data-symbol'),
-          reels[1].querySelector('.reel-symbol img').getAttribute('data-symbol'),
-          reels[2].querySelector('.reel-symbol img').getAttribute('data-symbol')
-        ],
-        [
-          reels[3].querySelector('.reel-symbol img').getAttribute('data-symbol'),
-          reels[4].querySelector('.reel-symbol img').getAttribute('data-symbol'),
-          reels[5].querySelector('.reel-symbol img').getAttribute('data-symbol')
-        ],
-        [
-          reels[6].querySelector('.reel-symbol img').getAttribute('data-symbol'),
-          reels[7].querySelector('.reel-symbol img').getAttribute('data-symbol'),
-          reels[8].querySelector('.reel-symbol img').getAttribute('data-symbol')
-        ]
-      ];
-
-      let winAmount = 0;
-      
-      config.winningLines.forEach(line => {
-        const [i1, i2, i3] = line;
-        const symbol1 = grid[Math.floor(i1 / 3)][i1 % 3];
-        const symbol2 = grid[Math.floor(i2 / 3)][i2 % 3];
-        const symbol3 = grid[Math.floor(i3 / 3)][i3 % 3];
-
-        if (symbol1 === symbol2 && symbol2 === symbol3 && symbol1) {
-          winAmount += config.symbols[symbol1].payout * state.totalLines;
-          drawWinningLine(line);
-        }
-      });
-
-      if (winAmount > 0) {
-        state.userAmount += winAmount;
-        elements.winAmount.textContent = `${winAmount} WIN`;
-        elements.winSound.currentTime = 0;
-        elements.winSound.play().catch(error => console.log("Audio play failed:", error));
-      }
-      
-      updateUI();
-    }
-
-    // Draw visual line for winning combinations
-    function drawWinningLine(line) {
-      const [i1, i2, i3] = line;
-      const slot1 = document.querySelector(`.slot-panel[data-row="${Math.floor(i1 / 3)}"][data-col="${i1 % 3}"]`);
-      const slot2 = document.querySelector(`.slot-panel[data-row="${Math.floor(i2 / 3)}"][data-col="${i2 % 3}"]`);
-      const slot3 = document.querySelector(`.slot-panel[data-row="${Math.floor(i3 / 3)}"][data-col="${i3 % 3}"]`);
-
-      const lineElement = document.createElement('div');
-      lineElement.className = 'winning-line';
-      const rect1 = slot1.getBoundingClientRect();
-      const rect2 = slot3.getBoundingClientRect();
-      const top = rect1.top + window.scrollY + rect1.height / 2;
-      const left = rect1.left + window.scrollX + rect1.width / 2;
-      const width = Math.sqrt(
-        Math.pow(rect2.left + rect2.width / 2 - (rect1.left + rect1.width / 2), 2) + 
-        Math.pow(rect2.top + rect2.height / 2 - (rect1.top + rect1.height / 2), 2)
-      );
-      const angle = Math.atan2(rect2.top - rect1.top, rect2.left - rect1.left) * 180 / Math.PI;
-      
-      lineElement.style.width = `${width}px`;
-      lineElement.style.top = `${top}px`;
-      lineElement.style.left = `${left}px`;
-      lineElement.style.transform = `rotate(${angle}deg)`;
-      elements.slotMachine.appendChild(lineElement);
-
-      setTimeout(() => lineElement.remove(), 1000);
-    }
-
-    // Initialize the game when DOM is loaded
-    document.addEventListener('DOMContentLoaded', init);
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
