@@ -895,374 +895,6 @@ body {
     }
 }
 
-/* ===== MOBILE RESPONSIVE DESIGN ===== */
-@media (max-width: 400px) {
-    .loading-title { font-size: 28px; }
-    .loading-subtitle { font-size: 12px; }
-    .loading-progress { width: 200px; }
-    
-    .slot-loader { gap: 8px; }
-    .loader-reel { width: 50px; height: 75px; }
-    .loader-symbol { font-size: 20px; }
-    
-    .game-header {
-        min-height: 40px;
-        padding: 5px 8px;
-        flex-wrap: nowrap;
-        gap: 6px;
-    }
-    
-    .retro-panel {
-        padding: 4px 8px;
-        border-radius: 4px;
-        border-width: 1px;
-    }
-    
-    .coins-display {
-        gap: 6px;
-    }
-    
-    .coin-icon {
-        width: 16px;
-        height: 16px;
-        font-size: 10px;
-    }
-    
-    .coin-count {
-        font-size: 12px;
-        letter-spacing: 1px;
-    }
-    
-    .mini-text {
-        font-size: 12px;
-        letter-spacing: 1px;
-    }
-    
-    .mini-amount {
-        font-size: 12px;
-        letter-spacing: 1px;
-    }
-    
-    .menu-button {
-        width: 28px;
-        height: 28px;
-    }
-    
-    .menu-line {
-        width: 12px;
-        height: 2px;
-    }
-    
-    .game-content {
-        padding: 5px 5px 50px 5px;
-        gap: 8px;
-    }
-    
-    .paylines-left, .paylines-right {
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-    
-    .payline-item {
-        background: #111;
-        border: 1px solid #0ff;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 12px;
-        text-align: center;
-        min-width: 28px;
-    }
-    
-    .slot-machine {
-        padding: 12px;
-        max-width: 100%;
-        border-width: 3px;
-        border-color: var(--border-cyan);
-        border-radius: 10px;
-        margin-top: 10px;
-        background: linear-gradient(145deg, #3a3a3a, #252525);
-        box-shadow: 
-            0 0 25px rgba(0, 255, 204, 0.4),
-            inset 0 4px 8px rgba(255, 255, 255, 0.15),
-            inset 0 -4px 8px rgba(0, 0, 0, 0.3);
-    }
-    
-    .reel-container {
-        gap: 4px;
-        height: 198px;
-    }
-    
-    .symbol-box {
-        width: 60px;
-        height: 60px;
-        border-width: 2px;
-        border-radius: 6px;
-        margin: 3px auto;
-    }
-    
-    .symbol {
-        font-size: 24px;
-    }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
-        font-size: 28px;
-    }
-    
-    .bar {
-        font-size: 16px;
-    }
-    
-    .wild {
-        font-size: 26px;
-    }
-    
-    .payline-4.winning.diagonal,
-    .payline-5.winning.diagonal {
-        width: 140%;
-        left: -20%;
-        height: 2px;
-    }
-    
-    .game-interface {
-        padding: 6px 8px;
-        min-height: 100px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-    }
-    
-    .lines-section {
-        position: absolute;
-        top: 80px;
-        left: 10px;
-        transform: none;
-        margin-bottom: 0;
-        gap: 2px;
-        flex: 0 0 auto;
-    }
-    
-    .lines-display {
-        min-width: 40px;
-        padding: 2px 3px;
-        border-width: 1px;
-        height: 25px;
-    }
-    
-    .lines-number {
-        font-size: 10px;
-    }
-    
-    .lines-label {
-        font-size: 4px;
-        margin-top: 1px;
-    }
-    
-    .interface-top {
-        display: flex;
-        justify-content: flex-start; /* Align "Total Bet" and "Line Bet" to the left */
-        align-items: center;
-        width: 100%;
-        gap: 4px;
-        position:absolute;
-        top:0;
-        left:0;
-    }
-    
-    .play-controls {
-        min-width: 120px;
-        gap: 4px;
-        flex: 0 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    .play-item {
-        padding: 4px 6px;
-        border-width: 1px;
-        height: 25px;
-        flex: 1;
-        min-width: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-radius: 4px;
-    }
-    
-    .play-label {
-        font-size: 6px;
-        white-space: nowrap;
-    }
-    
-    .play-value {
-        font-size: 8px;
-    }
-    
-    .control-buttons {
-        display: flex;
-        flex-direction: row;
-        gap: 1px;
-        align-items: center;
-    }
-    
-    .control-btn {
-        width: 20px;
-        height: 20px;
-        font-size: 8px;
-        border-width: 1px;
-        line-height: 20px;
-    }
-    
-    .interface-bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        gap: 8px;
-        flex-wrap: nowrap;
-    }
-    
-    .win-section {
-        margin-bottom: 0;
-        flex: 1;
-    }
-    
-    .win-display {
-        min-width: 80px;
-        padding: 4px 10px;
-        border-width: 1px;
-        border-radius: 15px;
-    }
-    
-    .win-amount {
-        font-size: 14px;
-    }
-    
-    .win-label {
-        font-size: 6px;
-        letter-spacing: 0.5px;
-        margin-top: 1px;
-    }
-    
-    .action-section {
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        flex: 0 0 auto;
-        justify-content: flex-end;
-    }
-    
-    .fast-btn {
-        width: 30px;
-        height: 30px;
-        border-width: 1px;
-    }
-    
-    .fast-text {
-        font-size: 5px;
-        letter-spacing: 0.5px;
-    }
-    
-    .spin-btn {
-        width: 60px;
-        height: 30px;
-        border-width: 1px;
-        border-radius: 6px;
-    }
-    
-    .spin-text {
-        font-size: 8px;
-        letter-spacing: 0.5px;
-    }
-    
-    .autoplay-text {
-        font-size: 4px;
-        margin-top: 1px;
-    }
-}
-
-/* Medium Mobile and up */
-@media (min-width: 481px) and (max-width: 600px) {
-    .game-content {
-        flex-direction: row;
-        align-items: flex-start;
-        padding: 15px 15px 100px 15px;
-        gap: 15px;
-    }
-    
-    .paylines-display {
-        flex-direction: column;
-        margin-right: 15px;
-        margin-bottom: 0;
-        gap: 8px;
-    }
-    
-    .payline-item {
-        min-width: 45px;
-        padding: 5px 8px;
-        font-size: 12px;
-    }
-    
-    .slot-machine {
-        flex: 1;
-        max-width: none;
-    }
-    
-    .symbol-box {
-        width: 80px;
-        height: 80px;
-    }
-    
-    .symbol {
-        font-size: 32px;
-    }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
-        font-size: 36px;
-    }
-    
-    .bar {
-        font-size: 20px;
-    }
-    
-    .reel-container {
-        height: 264px;
-    }
-    
-    .payline-4.winning.diagonal,
-    .payline-5.winning.diagonal {
-        width: 125%;
-        left: -12.5%;
-        height: 3.5px;
-    }
-    
-    .game-interface {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 18px;
-        min-height: 80px;
-        gap: 15px;
-    }
-    
-    .lines-section {
-        margin-bottom: 0;
-        flex: 1;
-    }
-    
-    .win-section {
-        margin-bottom: 0;
-        flex: 1;
-    }
-    
-    .action-section {
-        flex: 1;
-        justify-content: flex-end;
-    }
-}
-
 /* Larger screens */
 @media (min-width: 601px) {
     .game-content {
@@ -1317,6 +949,776 @@ body {
     }
 }
 
+/* ===== MOBILE RESPONSIVE DESIGN ===== */
+/* Very Small Phones (320px and below) */
+@media (max-width: 320px) {
+    .loading-title { font-size: 24px; }
+    .loading-subtitle { font-size: 10px; }
+    .loading-progress { width: 180px; }
+    
+    .slot-loader { gap: 5px; }
+    .loader-reel { width: 40px; height: 60px; }
+    .loader-symbol { font-size: 16px; }
+    
+    .game-header {
+        min-height: 40px;
+        padding: 5px;
+        gap: 4px;
+    }
+    
+    .retro-panel {
+        padding: 2px 4px;
+        border-radius: 3px;
+    }
+    
+    .coin-icon {
+        width: 14px;
+        height: 14px;
+        font-size: 8px;
+    }
+    
+    .coin-count {
+        font-size: 10px;
+    }
+    
+    .mini-text, .mini-amount {
+        font-size: 10px;
+    }
+    
+    .menu-button {
+        width: 24px;
+        height: 24px;
+    }
+    
+    .menu-line {
+        width: 10px;
+        height: 1.5px;
+    }
+    
+    .game-content {
+        padding: 5px 5px 60px 5px;
+    }
+    
+    .paylines-display {
+        gap: 2px;
+        margin-top: -5px;
+    }
+    
+    .payline-item {
+        min-width: 25px;
+        padding: 2px 3px;
+        font-size: 7px;
+    }
+    
+    .slot-machine {
+        padding: 8px;
+        border-width: 2px;
+    }
+    
+    .reel-container {
+        gap: 3px;
+        height: 150px;
+    }
+    
+    .symbol-box {
+        width: 45px;
+        height: 45px;
+        margin: 2px auto;
+    }
+    
+    .symbol {
+        font-size: 18px;
+    }
+    
+    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+        font-size: 22px;
+    }
+    
+    .bar {
+        font-size: 12px;
+    }
+    
+    .wild {
+        font-size: 20px;
+    }
+    
+    .game-interface {
+        padding: 5px;
+        min-height: 80px;
+    }
+    
+    .lines-display {
+        min-width: 30px;
+        padding: 2px;
+    }
+    
+    .lines-number {
+        font-size: 8px;
+    }
+    
+    .lines-label {
+        font-size: 3px;
+    }
+    
+    .play-item {
+        padding: 2px 3px;
+        height: 20px;
+    }
+    
+    .play-label {
+        font-size: 5px;
+    }
+    
+    .play-value {
+        font-size: 6px;
+    }
+    
+    .control-btn {
+        width: 16px;
+        height: 16px;
+        font-size: 6px;
+    }
+    
+    .win-display {
+        min-width: 70px;
+        padding: 4px 8px;
+    }
+    
+    .win-amount {
+        font-size: 12px;
+    }
+    
+    .win-label {
+        font-size: 5px;
+    }
+    
+    .fast-btn {
+        width: 25px;
+        height: 25px;
+    }
+    
+    .fast-text {
+        font-size: 4px;
+    }
+    
+    .spin-btn {
+        width: 50px;
+        height: 25px;
+    }
+    
+    .spin-text {
+        font-size: 6px;
+    }
+    
+    .autoplay-text {
+        font-size: 3px;
+    }
+}
+
+/* Small Phones (321px to 375px) */
+@media (min-width: 321px) and (max-width: 375px) {
+    .loading-title { font-size: 28px; }
+    .loading-subtitle { font-size: 12px; }
+    .loading-progress { width: 200px; }
+    
+    .slot-loader { gap: 8px; }
+    .loader-reel { width: 50px; height: 75px; }
+    .loader-symbol { font-size: 20px; }
+    
+    .game-header {
+        min-height: 40px;
+        padding: 5px 8px;
+        gap: 6px;
+    }
+    
+    .retro-panel {
+        padding: 4px 8px;
+        border-radius: 4px;
+    }
+    
+    .coin-icon {
+        width: 16px;
+        height: 16px;
+        font-size: 10px;
+    }
+    
+    .coin-count {
+        font-size: 12px;
+    }
+    
+    .mini-text, .mini-amount {
+        font-size: 12px;
+    }
+    
+    .menu-button {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .menu-line {
+        width: 12px;
+        height: 2px;
+    }
+    
+    .game-content {
+        padding: 5px 5px 70px 5px;
+    }
+    
+    .paylines-display {
+        gap: 3px;
+        margin-top: -8px;
+    }
+    
+    .payline-item {
+        min-width: 30px;
+        padding: 3px 5px;
+        font-size: 9px;
+    }
+    
+    .slot-machine {
+        padding: 12px;
+        border-width: 3px;
+    }
+    
+    .reel-container {
+        gap: 4px;
+        height: 198px;
+    }
+    
+    .symbol-box {
+        width: 60px;
+        height: 60px;
+        margin: 3px auto;
+    }
+    
+    .symbol {
+        font-size: 24px;
+    }
+    
+    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+        font-size: 28px;
+    }
+    
+    .bar {
+        font-size: 16px;
+    }
+    
+    .wild {
+        font-size: 26px;
+    }
+    
+    .game-interface {
+        padding: 6px 8px;
+        min-height: 90px;
+    }
+    
+    .lines-display {
+        min-width: 40px;
+        padding: 2px 3px;
+    }
+    
+    .lines-number {
+        font-size: 10px;
+    }
+    
+    .lines-label {
+        font-size: 4px;
+    }
+    
+    .play-item {
+        padding: 4px 6px;
+        height: 25px;
+    }
+    
+    .play-label {
+        font-size: 6px;
+    }
+    
+    .play-value {
+        font-size: 8px;
+    }
+    
+    .control-btn {
+        width: 20px;
+        height: 20px;
+        font-size: 8px;
+    }
+    
+    .win-display {
+        min-width: 80px;
+        padding: 4px 10px;
+    }
+    
+    .win-amount {
+        font-size: 14px;
+    }
+    
+    .win-label {
+        font-size: 6px;
+    }
+    
+    .fast-btn {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .fast-text {
+        font-size: 5px;
+    }
+    
+    .spin-btn {
+        width: 60px;
+        height: 30px;
+    }
+    
+    .spin-text {
+        font-size: 8px;
+    }
+    
+    .autoplay-text {
+        font-size: 4px;
+    }
+}
+
+/* Medium Phones (376px to 480px) */
+@media (min-width: 376px) and (max-width: 480px) {
+    .loading-title { font-size: 32px; }
+    .loading-subtitle { font-size: 14px; }
+    .loading-progress { width: 250px; }
+    
+    .slot-loader { gap: 10px; }
+    .loader-reel { width: 60px; height: 90px; }
+    .loader-symbol { font-size: 24px; }
+    
+    .game-header {
+        min-height: 50px;
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+    .retro-panel {
+        padding: 6px 10px;
+        border-radius: 5px;
+    }
+    
+    .coin-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+    }
+    
+    .coin-count {
+        font-size: 16px;
+    }
+    
+    .mini-text, .mini-amount {
+        font-size: 16px;
+    }
+    
+    .menu-button {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .menu-line {
+        width: 14px;
+        height: 2.5px;
+    }
+    
+    .game-content {
+        padding: 8px 8px 80px 8px;
+    }
+    
+    .paylines-display {
+        gap: 4px;
+        margin-top: -10px;
+    }
+    
+    .payline-item {
+        min-width: 35px;
+        padding: 4px 6px;
+        font-size: 10px;
+    }
+    
+    .slot-machine {
+        padding: 15px;
+        border-width: 3px;
+    }
+    
+    .reel-container {
+        gap: 5px;
+        height: 220px;
+    }
+    
+    .symbol-box {
+        width: 70px;
+        height: 70px;
+        margin: 4px auto;
+    }
+    
+    .symbol {
+        font-size: 28px;
+    }
+    
+    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+        font-size: 32px;
+    }
+    
+    .bar {
+        font-size: 18px;
+    }
+    
+    .wild {
+        font-size: 30px;
+    }
+    
+    .game-interface {
+        padding: 8px 12px;
+        min-height: 100px;
+    }
+    
+    .lines-display {
+        min-width: 45px;
+        padding: 3px 5px;
+    }
+    
+    .lines-number {
+        font-size: 12px;
+    }
+    
+    .lines-label {
+        font-size: 5px;
+    }
+    
+    .play-item {
+        padding: 5px 8px;
+        height: 28px;
+    }
+    
+    .play-label {
+        font-size: 7px;
+    }
+    
+    .play-value {
+        font-size: 10px;
+    }
+    
+    .control-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 9px;
+    }
+    
+    .win-display {
+        min-width: 90px;
+        padding: 6px 12px;
+    }
+    
+    .win-amount {
+        font-size: 16px;
+    }
+    
+    .win-label {
+        font-size: 7px;
+    }
+    
+    .fast-btn {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .fast-text {
+        font-size: 6px;
+    }
+    
+    .spin-btn {
+        width: 70px;
+        height: 35px;
+    }
+    
+    .spin-text {
+        font-size: 10px;
+    }
+    
+    .autoplay-text {
+        font-size: 5px;
+    }
+}
+
+/* Large Phones (481px to 600px) */
+@media (min-width: 481px) and (max-width: 600px) {
+    .loading-title { font-size: 36px; }
+    .loading-subtitle { font-size: 16px; }
+    .loading-progress { width: 280px; }
+    
+    .slot-loader { gap: 12px; }
+    .loader-reel { width: 70px; height: 105px; }
+    .loader-symbol { font-size: 28px; }
+    
+    .game-header {
+        min-height: 60px;
+        padding: 10px 15px;
+        gap: 10px;
+    }
+    
+    .retro-panel {
+        padding: 8px 12px;
+        border-radius: 6px;
+    }
+    
+    .coin-icon {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+    
+    .coin-count {
+        font-size: 20px;
+    }
+    
+    .mini-text, .mini-amount {
+        font-size: 20px;
+    }
+    
+    .menu-button {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .menu-line {
+        width: 16px;
+        height: 3px;
+    }
+    
+    .game-content {
+        flex-direction: row;
+        padding: 10px 10px 90px 10px;
+        gap: 15px;
+    }
+    
+    .paylines-display {
+        flex-direction: column;
+        gap: 8px;
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .payline-item {
+        min-width: 45px;
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+    
+    .slot-machine {
+        flex: 1;
+        max-width: none;
+    }
+    
+    .symbol-box {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .symbol {
+        font-size: 32px;
+    }
+    
+    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+        font-size: 36px;
+    }
+    
+    .bar {
+        font-size: 20px;
+    }
+    
+    .reel-container {
+        height: 264px;
+    }
+    
+    .game-interface {
+        padding: 10px 15px;
+        min-height: 110px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 15px;
+    }
+    
+    .lines-section {
+        margin-bottom: 0;
+        flex: 1;
+    }
+    
+    .win-section {
+        margin-bottom: 0;
+        flex: 1;
+    }
+    
+    .action-section {
+        flex: 1;
+        justify-content: flex-end;
+    }
+}
+
+/* Small Tablets (601px to 768px) */
+@media (min-width: 601px) and (max-width: 768px) {
+    .loading-title { font-size: 40px; }
+    .loading-subtitle { font-size: 18px; }
+    .loading-progress { width: 320px; }
+    
+    .slot-loader { gap: 15px; }
+    .loader-reel { width: 80px; height: 120px; }
+    .loader-symbol { font-size: 32px; }
+    
+    .game-header {
+        min-height: 70px;
+        padding: 12px 20px;
+        gap: 12px;
+    }
+    
+    .retro-panel {
+        padding: 10px 15px;
+        border-radius: 7px;
+    }
+    
+    .coin-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 16px;
+    }
+    
+    .coin-count {
+        font-size: 24px;
+    }
+    
+    .mini-text, .mini-amount {
+        font-size: 24px;
+    }
+    
+    .menu-button {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .menu-line {
+        width: 18px;
+        height: 3px;
+    }
+    
+    .game-content {
+        flex-direction: row;
+        padding: 15px 15px 100px 15px;
+        gap: 20px;
+    }
+    
+    .paylines-display {
+        flex-direction: column;
+        gap: 10px;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+    
+    .payline-item {
+        min-width: 55px;
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+    
+    .slot-machine {
+        flex: 1;
+        max-width: none;
+    }
+    
+    .symbol-box {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .symbol {
+        font-size: 36px;
+    }
+    
+    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+        font-size: 40px;
+    }
+    
+    .bar {
+        font-size: 22px;
+    }
+    
+    .reel-container {
+        height: 290px;
+    }
+    
+    .game-interface {
+        padding: 12px 20px;
+        min-height: 120px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+    .lines-section,
+    .win-section,
+    .action-section {
+        margin-bottom: 0;
+    }
+}
+
+/* Large Tablets (769px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .game-content {
+        flex-direction: row;
+        padding: 20px 20px 120px 20px;
+        gap: 30px;
+    }
+    
+    .paylines-display {
+        flex-direction: column;
+        gap: 12px;
+        margin-right: 30px;
+        margin-bottom: 0;
+    }
+    
+    .payline-item {
+        min-width: 60px;
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+    
+    .slot-machine {
+        flex: 1;
+        max-width: none;
+    }
+    
+    .symbol-box {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .symbol {
+        font-size: 40px;
+    }
+    
+    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+        font-size: 48px;
+    }
+    
+    .bar {
+        font-size: 24px;
+    }
+    
+    .reel-container {
+        height: 330px;
+    }
+    
+    .game-interface {
+        padding: 15px 25px;
+        min-height: 130px;
+    }
+}
+
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
     .payline-item,
@@ -1330,5 +1732,73 @@ body {
     .control-btn {
         width: 32px;
         height: 22px;
+    }
+    
+    /* Increase hit targets for touch devices */
+    .symbol-box {
+        padding: 5px;
+    }
+    
+    .payline-item {
+        padding: 8px 12px;
+    }
+    
+    .spin-btn, .fast-btn {
+        padding: 12px;
+    }
+    
+    /* Reduce animations that might cause performance issues */
+    @media (prefers-reduced-motion: reduce) {
+        * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+    .game-header {
+        min-height: 50px;
+        padding: 8px 15px;
+    }
+    
+    .game-content {
+        flex-direction: row;
+        padding-bottom: 80px;
+    }
+    
+    .paylines-display {
+        flex-direction: column;
+        margin-right: 15px;
+        margin-bottom: 0;
+    }
+    
+    .slot-machine {
+        max-width: 300px;
+    }
+    
+    .symbol-box {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .symbol {
+        font-size: 28px;
+    }
+    
+    .game-interface {
+        min-height: 80px;
+        padding: 8px 15px;
+    }
+    
+    .lines-section {
+        margin-bottom: 0;
+    }
+    
+    .win-section {
+        margin-bottom: 0;
     }
 }
