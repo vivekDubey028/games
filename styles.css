@@ -16,7 +16,7 @@
     --page-bg-dark: #0a1428;
     --page-bg-light: #1e3a5f;
     --page-bg-accent: #2a4d7a;
-    
+
     /* Slot Machine Colors */
     --reel-bg: #4a4a4a;
     --symbol-box-light: #e6e6e6;
@@ -38,7 +38,7 @@
 
 body {
     font-family: 'Orbitron', monospace;
-    background: 
+    background:
         radial-gradient(circle at 30% 20%, var(--page-bg-accent) 0%, transparent 50%),
         radial-gradient(circle at 70% 80%, var(--page-bg-accent) 0%, transparent 50%),
         linear-gradient(135deg, var(--page-bg-dark) 0%, var(--page-bg-light) 100%);
@@ -104,15 +104,38 @@ body {
     animation: loaderSpin 2s linear infinite;
 }
 
-.loader-reel:nth-child(1) .loader-symbol { animation-delay: 0s; }
-.loader-reel:nth-child(2) .loader-symbol { animation-delay: 0.3s; }
-.loader-reel:nth-child(3) .loader-symbol { animation-delay: 0.6s; }
+.loader-reel:nth-child(1) .loader-symbol {
+    animation-delay: 0s;
+}
+
+.loader-reel:nth-child(2) .loader-symbol {
+    animation-delay: 0.3s;
+}
+
+.loader-reel:nth-child(3) .loader-symbol {
+    animation-delay: 0.6s;
+}
 
 @keyframes loaderSpin {
-    0% { transform: translateY(-100%); opacity: 0; }
-    25% { transform: translateY(0); opacity: 1; }
-    75% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(100%); opacity: 0; }
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    25% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    75% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
 }
 
 .loading-title {
@@ -150,8 +173,13 @@ body {
 }
 
 @keyframes progressLoad {
-    0% { width: 0%; }
-    100% { width: 100%; }
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
 }
 
 /* ===== GAME CONTAINER ===== */
@@ -165,12 +193,12 @@ body {
 .game-header {
     width: 100%;
     min-height: 80px;
-    background: linear-gradient(45deg, 
-        var(--bg-dark-blue) 0%, 
-        var(--bg-mid-blue) 25%, 
-        var(--bg-light-blue) 50%, 
-        var(--bg-mid-blue) 75%, 
-        var(--bg-dark-blue) 100%);
+    background: linear-gradient(45deg,
+            var(--bg-dark-blue) 0%,
+            var(--bg-mid-blue) 25%,
+            var(--bg-light-blue) 50%,
+            var(--bg-mid-blue) 75%,
+            var(--bg-dark-blue) 100%);
     position: relative;
     display: flex;
     align-items: center;
@@ -187,7 +215,7 @@ body {
     border-radius: 8px;
     padding: 12px 18px;
     position: relative;
-    box-shadow: 
+    box-shadow:
         0 0 10px rgba(0, 255, 204, 0.4),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
@@ -209,7 +237,7 @@ body {
     font-weight: bold;
     color: var(--bg-dark-blue);
     font-size: 18px;
-    box-shadow: 
+    box-shadow:
         0 0 8px rgba(255, 204, 0, 0.6),
         inset 0 2px 4px rgba(255, 255, 255, 0.3);
 }
@@ -218,7 +246,7 @@ body {
     color: var(--text-yellow);
     font-weight: 900;
     font-size: 24px;
-    text-shadow: 
+    text-shadow:
         0 0 10px rgba(255, 221, 0, 0.8),
         2px 2px 4px rgba(0, 0, 0, 0.8);
     letter-spacing: 2px;
@@ -234,7 +262,7 @@ body {
     color: var(--text-pink);
     font-weight: 900;
     font-size: 26px;
-    text-shadow: 
+    text-shadow:
         0 0 12px rgba(255, 0, 153, 0.8),
         2px 2px 4px rgba(0, 0, 0, 0.8);
     letter-spacing: 3px;
@@ -244,7 +272,7 @@ body {
     color: var(--text-yellow);
     font-weight: 900;
     font-size: 26px;
-    text-shadow: 
+    text-shadow:
         0 0 12px rgba(255, 221, 0, 0.8),
         2px 2px 4px rgba(0, 0, 0, 0.8);
     letter-spacing: 2px;
@@ -341,11 +369,12 @@ body {
     border: 4px solid var(--symbol-box-light);
     border-radius: 12px;
     padding: 20px;
-    box-shadow: 
+    box-shadow:
         0 0 20px rgba(0, 0, 0, 0.5),
         inset 0 2px 4px rgba(255, 255, 255, 0.1);
     width: 100%;
     max-width: 400px;
+    margin-bottom: 60px;
 }
 
 /* ===== WINNING COINS ANIMATION ===== */
@@ -381,6 +410,7 @@ body {
         transform: translateY(-50px) rotate(0deg);
         opacity: 1;
     }
+
     100% {
         transform: translateY(300px) rotate(720deg);
         opacity: 0;
@@ -408,26 +438,107 @@ body {
 }
 
 /* Payline Colors */
-.payline-1 { background: var(--payline-red); color: var(--payline-red); }
-.payline-2 { background: var(--payline-gold); color: var(--payline-gold); }
-.payline-3 { background: var(--payline-green); color: var(--payline-green); }
-.payline-4 { background: var(--payline-purple); color: var(--payline-purple); }
-.payline-5 { background: var(--payline-orange); color: var(--payline-orange); }
-.payline-6 { background: #00ffff; color: #00ffff; }
-.payline-7 { background: #ff69b4; color: #ff69b4; }
-.payline-8 { background: #32cd32; color: #32cd32; }
-.payline-9 { background: #ffa500; color: #ffa500; }
-.payline-10 { background: #9370db; color: #9370db; }
+.payline-1 {
+    background: var(--payline-red);
+    color: var(--payline-red);
+}
+
+.payline-2 {
+    background: var(--payline-gold);
+    color: var(--payline-gold);
+}
+
+.payline-3 {
+    background: var(--payline-green);
+    color: var(--payline-green);
+}
+
+.payline-4 {
+    background: var(--payline-purple);
+    color: var(--payline-purple);
+}
+
+.payline-5 {
+    background: var(--payline-orange);
+    color: var(--payline-orange);
+}
+
+.payline-6 {
+    background: #00ffff;
+    color: #00ffff;
+}
+
+.payline-7 {
+    background: #ff69b4;
+    color: #ff69b4;
+}
+
+.payline-8 {
+    background: #32cd32;
+    color: #32cd32;
+}
+
+.payline-9 {
+    background: #ffa500;
+    color: #ffa500;
+}
+
+.payline-10 {
+    background: #9370db;
+    color: #9370db;
+}
 
 /* Payline Positions */
-.payline-1 { top: 50%; left: 0; right: 0; transform: translateY(-50%); }
-.payline-2 { top: 16.67%; left: 0; right: 0; }
-.payline-3 { top: 83.33%; left: 0; right: 0; }
-.payline-6 { top: 50%; left: 0; width: 33.33%; transform: translateY(-50%); }
-.payline-7 { top: 50%; right: 0; width: 33.33%; transform: translateY(-50%); }
-.payline-8 { top: 16.67%; left: 0; width: 66.67%; }
-.payline-9 { top: 83.33%; right: 0; width: 66.67%; }
-.payline-10 { top: 16.67%; right: 0; width: 66.67%; }
+.payline-1 {
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.payline-2 {
+    top: 16.67%;
+    left: 0;
+    right: 0;
+}
+
+.payline-3 {
+    top: 83.33%;
+    left: 0;
+    right: 0;
+}
+
+.payline-6 {
+    top: 50%;
+    left: 0;
+    width: 33.33%;
+    transform: translateY(-50%);
+}
+
+.payline-7 {
+    top: 50%;
+    right: 0;
+    width: 33.33%;
+    transform: translateY(-50%);
+}
+
+.payline-8 {
+    top: 16.67%;
+    left: 0;
+    width: 66.67%;
+}
+
+.payline-9 {
+    top: 83.33%;
+    right: 0;
+    width: 66.67%;
+}
+
+.payline-10 {
+    top: 16.67%;
+    right: 0;
+    width: 66.67%;
+}
 
 /* Diagonal Paylines */
 .payline-4.winning.diagonal {
@@ -460,8 +571,17 @@ body {
 }
 
 @keyframes paylineWin {
-    0%, 100% { opacity: 0.8; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.5); }
+
+    0%,
+    100% {
+        opacity: 0.8;
+        transform: scaleY(1);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1.5);
+    }
 }
 
 .reel-container {
@@ -469,7 +589,8 @@ body {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     width: 100%;
-    height: 330px; /* 3 symbols at 100px each + gaps */
+    height: 330px;
+    /* 3 symbols at 100px each + gaps */
 }
 
 .reel {
@@ -494,36 +615,78 @@ body {
 }
 
 @keyframes spinReel {
-    0% { transform: translateY(0); filter: blur(0px); }
-    50% { filter: blur(4px); }
-    100% { transform: translateY(calc(-100% + 330px)); filter: blur(0px); }
+    0% {
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+
+    50% {
+        filter: blur(4px);
+    }
+
+    100% {
+        transform: translateY(calc(-100% + 330px));
+        filter: blur(0px);
+    }
 }
 
 @keyframes spinReel1 {
-    0% { transform: translateY(0); filter: blur(0px); }
-    50% { filter: blur(4px); }
-    100% { transform: translateY(calc(-100% + 330px)); filter: blur(0px); }
+    0% {
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+
+    50% {
+        filter: blur(4px);
+    }
+
+    100% {
+        transform: translateY(calc(-100% + 330px));
+        filter: blur(0px);
+    }
 }
 
 @keyframes spinReel2 {
-    0% { transform: translateY(0); filter: blur(0px); }
-    50% { filter: blur(4px); }
-    100% { transform: translateY(calc(-100% + 330px)); filter: blur(0px); }
+    0% {
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+
+    50% {
+        filter: blur(4px);
+    }
+
+    100% {
+        transform: translateY(calc(-100% + 330px));
+        filter: blur(0px);
+    }
 }
 
 @keyframes spinReel3 {
-    0% { transform: translateY(0); filter: blur(0px); }
-    50% { filter: blur(4px); }
-    100% { transform: translateY(calc(-100% + 330px)); filter: blur(0px); }
+    0% {
+        transform: translateY(0);
+        filter: blur(0px);
+    }
+
+    50% {
+        filter: blur(4px);
+    }
+
+    100% {
+        transform: translateY(calc(-100% + 330px));
+        filter: blur(0px);
+    }
 }
 
 /* Staggered Spin for Each Reel */
 .reel:nth-child(1).spinning .reel-inner {
     animation: spinReel1 5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
+
 .reel:nth-child(2).spinning .reel-inner {
     animation: spinReel2 6s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
+
 .reel:nth-child(3).spinning .reel-inner {
     animation: spinReel3 7s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
@@ -532,12 +695,16 @@ body {
     background: linear-gradient(145deg, #ffaa44, #ff8822);
     animation: spinPulse 0.5s ease-in-out infinite;
 }
+
 @keyframes spinPulse {
-    0%, 100% { 
-        transform: scale(1); 
+
+    0%,
+    100% {
+        transform: scale(1);
     }
-    50% { 
-        transform: scale(1.05); 
+
+    50% {
+        transform: scale(1.05);
     }
 }
 
@@ -551,7 +718,7 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
-    box-shadow: 
+    box-shadow:
         0 4px 8px rgba(0, 0, 0, 0.3),
         inset 0 2px 4px rgba(255, 255, 255, 0.3);
     overflow: hidden;
@@ -561,7 +728,7 @@ body {
 
 .symbol-box.winning {
     border-color: var(--coin-gold);
-    box-shadow: 
+    box-shadow:
         0 0 20px rgba(255, 204, 0, 0.8),
         0 4px 8px rgba(0, 0, 0, 0.3),
         inset 0 2px 4px rgba(255, 255, 255, 0.3);
@@ -569,8 +736,15 @@ body {
 }
 
 @keyframes symbolWin {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .symbol-box::before {
@@ -580,9 +754,9 @@ body {
     left: 0;
     right: 0;
     height: 30%;
-    background: linear-gradient(to bottom, 
-        rgba(255, 255, 255, 0.4) 0%, 
-        transparent 100%);
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.4) 0%,
+            transparent 100%);
     border-radius: 5px;
     pointer-events: none;
 }
@@ -597,14 +771,14 @@ body {
 
 .seven-red {
     color: var(--seven-red);
-    text-shadow: 
+    text-shadow:
         0 0 10px var(--seven-red),
         2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .seven-blue {
     color: var(--seven-blue);
-    text-shadow: 
+    text-shadow:
         0 0 10px var(--seven-blue),
         2px 2px 4px rgba(0, 0, 0, 0.8);
 }
@@ -613,7 +787,7 @@ body {
     color: #ffffff;
     font-size: 24px;
     font-weight: 900;
-    text-shadow: 
+    text-shadow:
         0 0 10px #ffffff,
         2px 2px 4px rgba(0, 0, 0, 0.8);
     background: linear-gradient(45deg, #ff0000, #ffff00);
@@ -622,7 +796,13 @@ body {
     -webkit-text-fill-color: transparent;
 }
 
-.apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+.apple,
+.bell,
+.orange,
+.cherry,
+.lemon,
+.grape,
+.wild {
     font-size: 48px;
     filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
 }
@@ -630,15 +810,22 @@ body {
 .wild {
     color: var(--coin-gold);
     font-size: 44px;
-    text-shadow: 
+    text-shadow:
         0 0 10px var(--coin-gold),
         2px 2px 4px rgba(0, 0, 0, 0.8);
     animation: wildGlow 1.5s ease-in-out infinite;
 }
 
 @keyframes wildGlow {
-    0%, 100% { text-shadow: 0 0 10px var(--coin-gold), 2px 2px 4px rgba(0, 0, 0, 0.8); }
-    50% { text-shadow: 0 0 20px var(--coin-gold), 2px 2px 6px rgba(0, 0, 0, 0.8); }
+
+    0%,
+    100% {
+        text-shadow: 0 0 10px var(--coin-gold), 2px 2px 4px rgba(0, 0, 0, 0.8);
+    }
+
+    50% {
+        text-shadow: 0 0 20px var(--coin-gold), 2px 2px 6px rgba(0, 0, 0, 0.8);
+    }
 }
 
 /* ===== BOTTOM INTERFACE ===== */
@@ -650,7 +837,7 @@ body {
     width: 100%;
     background: linear-gradient(135deg, #1a5c5c 0%, #2d7a7a 50%, #1a5c5c 100%);
     border-top: 2px solid var(--border-cyan);
-    box-shadow: 
+    box-shadow:
         0 0 15px rgba(0, 255, 204, 0.3),
         inset 0 2px 4px rgba(255, 255, 255, 0.1);
     z-index: 1000;
@@ -736,8 +923,8 @@ body {
 }
 
 .control-btn {
-    width: 28px;
-    height: 18px;
+    width: 32px;
+    height: 32px;
     background: linear-gradient(145deg, #4a6a4a, #3a5a3a);
     border: 1px solid var(--border-cyan);
     border-radius: 4px;
@@ -770,7 +957,7 @@ body {
     border-radius: 30px;
     padding: 12px 30px;
     text-align: center;
-    box-shadow: 
+    box-shadow:
         0 0 15px rgba(0, 255, 204, 0.5),
         inset 0 2px 4px rgba(255, 255, 255, 0.1);
     position: relative;
@@ -786,7 +973,7 @@ body {
     font-size: 32px;
     font-weight: 900;
     color: var(--text-yellow);
-    text-shadow: 
+    text-shadow:
         0 0 12px rgba(255, 255, 0, 0.8),
         2px 2px 4px rgba(0, 0, 0, 0.5);
     line-height: 1;
@@ -819,7 +1006,7 @@ body {
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 
+    box-shadow:
         0 0 12px rgba(255, 68, 68, 0.5),
         inset 0 2px 4px rgba(255, 255, 255, 0.2);
     position: relative;
@@ -833,8 +1020,15 @@ body {
 }
 
 @keyframes fastPulse {
-    0%, 100% { box-shadow: 0 0 12px rgba(255, 68, 68, 0.5); }
-    50% { box-shadow: 0 0 20px rgba(255, 68, 68, 0.8); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 12px rgba(255, 68, 68, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 20px rgba(255, 68, 68, 0.8);
+    }
 }
 
 .fast-text {
@@ -853,7 +1047,7 @@ body {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.2s ease;
-    box-shadow: 
+    box-shadow:
         0 0 15px rgba(68, 255, 68, 0.5),
         inset 0 2px 4px rgba(255, 255, 255, 0.2);
     position: relative;
@@ -877,8 +1071,15 @@ body {
 }
 
 @keyframes spinPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
 }
 
 .spin-text {
@@ -910,12 +1111,15 @@ body {
 
 /* Win pulse animation */
 @keyframes winPulse {
-    0%, 100% { 
-        transform: scale(1); 
+
+    0%,
+    100% {
+        transform: scale(1);
         box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
     }
-    50% { 
-        transform: scale(1.1); 
+
+    50% {
+        transform: scale(1.1);
         box-shadow: 0 0 25px rgba(255, 255, 0, 0.8);
     }
 }
@@ -927,36 +1131,42 @@ body {
         padding: 20px 15px 90px 15px;
         gap: 20px;
     }
-    
+
     .paylines-display {
         flex-direction: column;
         margin-right: 20px;
         gap: 10px;
     }
-    
+
     .payline-item {
         min-width: 55px;
         padding: 6px 10px;
         font-size: 14px;
     }
-    
+
     .symbol-box {
         width: 100px;
         height: 100px;
     }
-    
+
     .symbol {
         font-size: 40px;
     }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+
+    .apple,
+    .bell,
+    .orange,
+    .cherry,
+    .lemon,
+    .grape,
+    .wild {
         font-size: 48px;
     }
-    
+
     .bar {
         font-size: 24px;
     }
-    
+
     .game-interface {
         display: flex;
         flex-direction: row;
@@ -966,7 +1176,7 @@ body {
         min-height: 70px;
         gap: 15px;
     }
-    
+
     .lines-section,
     .win-section,
     .action-section {
@@ -977,164 +1187,188 @@ body {
 /* ===== MOBILE RESPONSIVE DESIGN ===== */
 /* Very Small Phones (320px and below) */
 @media (max-width: 320px) {
-    .loading-title { font-size: 24px; }
-    .loading-subtitle { font-size: 10px; }
-    .loading-progress { width: 180px; }
-    
-    .slot-loader { gap: 5px; }
-    .loader-reel { width: 40px; height: 60px; }
-    .loader-symbol { font-size: 16px; }
-    
+    .loading-title {
+        font-size: 24px;
+    }
+
+    .loading-subtitle {
+        font-size: 10px;
+    }
+
+    .loading-progress {
+        width: 180px;
+    }
+
+    .slot-loader {
+        gap: 5px;
+    }
+
+    .loader-reel {
+        width: 40px;
+        height: 60px;
+    }
+
+    .loader-symbol {
+        font-size: 16px;
+    }
+
     .game-header {
         min-height: 40px;
         padding: 5px;
         gap: 4px;
     }
-    
+
     .retro-panel {
         padding: 2px 4px;
         border-radius: 3px;
     }
-    
+
     .coin-icon {
         width: 14px;
         height: 14px;
         font-size: 8px;
     }
-    
+
     .coin-count {
         font-size: 10px;
     }
-    
-    .mini-text, .mini-amount {
+
+    .mini-text,
+    .mini-amount {
         font-size: 10px;
     }
-    
+
     .menu-button {
         width: 24px;
         height: 24px;
     }
-    
+
     .menu-line {
         width: 10px;
         height: 1.5px;
     }
-    
+
     .game-content {
         padding: 5px 5px 60px 5px;
     }
-    
+
     .paylines-display {
         gap: 2px;
         margin-top: -5px;
     }
-    
+
     .payline-item {
         min-width: 25px;
         padding: 2px 3px;
         font-size: 7px;
     }
-    
+
     .slot-machine {
         padding: 8px;
         border-width: 2px;
     }
-    
+
     .reel-container {
         gap: 3px;
         height: 150px;
     }
-    
+
     .symbol-box {
         width: 45px;
         height: 45px;
         margin: 2px auto;
     }
-    
+
     .symbol {
         font-size: 18px;
     }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+
+    .apple,
+    .bell,
+    .orange,
+    .cherry,
+    .lemon,
+    .grape,
+    .wild {
         font-size: 22px;
     }
-    
+
     .bar {
         font-size: 12px;
     }
-    
+
     .wild {
         font-size: 20px;
     }
-    
+
     .game-interface {
         padding: 5px;
         min-height: 80px;
     }
-    
+
     .lines-display {
         min-width: 30px;
         padding: 2px;
     }
-    
+
     .lines-number {
         font-size: 8px;
     }
-    
+
     .lines-label {
         font-size: 3px;
     }
-    
+
     .play-item {
         padding: 2px 3px;
         height: 20px;
     }
-    
+
     .play-label {
         font-size: 5px;
     }
-    
+
     .play-value {
         font-size: 6px;
     }
-    
+
     .control-btn {
         width: 16px;
         height: 16px;
         font-size: 6px;
     }
-    
+
     .win-display {
         min-width: 70px;
         padding: 4px 8px;
     }
-    
+
     .win-amount {
         font-size: 12px;
     }
-    
+
     .win-label {
         font-size: 5px;
     }
-    
+
     .fast-btn {
         width: 25px;
         height: 25px;
     }
-    
+
     .fast-text {
         font-size: 4px;
     }
-    
+
     .spin-btn {
         width: 50px;
         height: 25px;
     }
-    
+
     .spin-text {
         font-size: 6px;
     }
-    
+
     .autoplay-text {
         font-size: 3px;
     }
@@ -1142,164 +1376,188 @@ body {
 
 /* Small Phones (321px to 375px) */
 @media (min-width: 321px) and (max-width: 375px) {
-    .loading-title { font-size: 28px; }
-    .loading-subtitle { font-size: 12px; }
-    .loading-progress { width: 200px; }
-    
-    .slot-loader { gap: 8px; }
-    .loader-reel { width: 50px; height: 75px; }
-    .loader-symbol { font-size: 20px; }
-    
+    .loading-title {
+        font-size: 28px;
+    }
+
+    .loading-subtitle {
+        font-size: 12px;
+    }
+
+    .loading-progress {
+        width: 200px;
+    }
+
+    .slot-loader {
+        gap: 8px;
+    }
+
+    .loader-reel {
+        width: 50px;
+        height: 75px;
+    }
+
+    .loader-symbol {
+        font-size: 20px;
+    }
+
     .game-header {
         min-height: 40px;
         padding: 5px 8px;
         gap: 6px;
     }
-    
+
     .retro-panel {
         padding: 4px 8px;
         border-radius: 4px;
     }
-    
+
     .coin-icon {
         width: 16px;
         height: 16px;
         font-size: 10px;
     }
-    
+
     .coin-count {
         font-size: 12px;
     }
-    
-    .mini-text, .mini-amount {
+
+    .mini-text,
+    .mini-amount {
         font-size: 12px;
     }
-    
+
     .menu-button {
         width: 28px;
         height: 28px;
     }
-    
+
     .menu-line {
         width: 12px;
         height: 2px;
     }
-    
+
     .game-content {
         padding: 5px 5px 70px 5px;
     }
-    
+
     .paylines-display {
         gap: 3px;
         margin-top: -8px;
     }
-    
+
     .payline-item {
         min-width: 30px;
         padding: 3px 5px;
         font-size: 9px;
     }
-    
+
     .slot-machine {
         padding: 12px;
         border-width: 3px;
     }
-    
+
     .reel-container {
         gap: 4px;
         height: 198px;
     }
-    
+
     .symbol-box {
         width: 60px;
         height: 60px;
         margin: 3px auto;
     }
-    
+
     .symbol {
         font-size: 24px;
     }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+
+    .apple,
+    .bell,
+    .orange,
+    .cherry,
+    .lemon,
+    .grape,
+    .wild {
         font-size: 28px;
     }
-    
+
     .bar {
         font-size: 16px;
     }
-    
+
     .wild {
         font-size: 26px;
     }
-    
+
     .game-interface {
         padding: 6px 8px;
         min-height: 90px;
     }
-    
+
     .lines-display {
         min-width: 40px;
         padding: 2px 3px;
     }
-    
+
     .lines-number {
         font-size: 10px;
     }
-    
+
     .lines-label {
         font-size: 4px;
     }
-    
+
     .play-item {
         padding: 4px 6px;
         height: 25px;
     }
-    
+
     .play-label {
         font-size: 6px;
     }
-    
+
     .play-value {
         font-size: 8px;
     }
-    
+
     .control-btn {
         width: 20px;
         height: 20px;
         font-size: 8px;
     }
-    
+
     .win-display {
         min-width: 80px;
         padding: 4px 10px;
     }
-    
+
     .win-amount {
         font-size: 14px;
     }
-    
+
     .win-label {
         font-size: 6px;
     }
-    
+
     .fast-btn {
         width: 30px;
         height: 30px;
     }
-    
+
     .fast-text {
         font-size: 5px;
     }
-    
+
     .spin-btn {
         width: 60px;
         height: 30px;
     }
-    
+
     .spin-text {
         font-size: 8px;
     }
-    
+
     .autoplay-text {
         font-size: 4px;
     }
@@ -1307,164 +1565,188 @@ body {
 
 /* Medium Phones (376px to 480px) */
 @media (min-width: 376px) and (max-width: 480px) {
-    .loading-title { font-size: 32px; }
-    .loading-subtitle { font-size: 14px; }
-    .loading-progress { width: 250px; }
-    
-    .slot-loader { gap: 10px; }
-    .loader-reel { width: 60px; height: 90px; }
-    .loader-symbol { font-size: 24px; }
-    
+    .loading-title {
+        font-size: 32px;
+    }
+
+    .loading-subtitle {
+        font-size: 14px;
+    }
+
+    .loading-progress {
+        width: 250px;
+    }
+
+    .slot-loader {
+        gap: 10px;
+    }
+
+    .loader-reel {
+        width: 60px;
+        height: 90px;
+    }
+
+    .loader-symbol {
+        font-size: 24px;
+    }
+
     .game-header {
         min-height: 50px;
         padding: 8px 12px;
         gap: 8px;
     }
-    
+
     .retro-panel {
         padding: 6px 10px;
         border-radius: 5px;
     }
-    
+
     .coin-icon {
         width: 20px;
         height: 20px;
         font-size: 12px;
     }
-    
+
     .coin-count {
         font-size: 16px;
     }
-    
-    .mini-text, .mini-amount {
+
+    .mini-text,
+    .mini-amount {
         font-size: 16px;
     }
-    
+
     .menu-button {
         width: 32px;
         height: 32px;
     }
-    
+
     .menu-line {
         width: 14px;
         height: 2.5px;
     }
-    
+
     .game-content {
         padding: 8px 8px 80px 8px;
     }
-    
+
     .paylines-display {
         gap: 4px;
         margin-top: -10px;
     }
-    
+
     .payline-item {
         min-width: 35px;
         padding: 4px 6px;
         font-size: 10px;
     }
-    
+
     .slot-machine {
         padding: 15px;
         border-width: 3px;
     }
-    
+
     .reel-container {
         gap: 5px;
         height: 220px;
     }
-    
+
     .symbol-box {
         width: 70px;
         height: 70px;
         margin: 4px auto;
     }
-    
+
     .symbol {
         font-size: 28px;
     }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+
+    .apple,
+    .bell,
+    .orange,
+    .cherry,
+    .lemon,
+    .grape,
+    .wild {
         font-size: 32px;
     }
-    
+
     .bar {
         font-size: 18px;
     }
-    
+
     .wild {
         font-size: 30px;
     }
-    
+
     .game-interface {
         padding: 8px 12px;
         min-height: 100px;
     }
-    
+
     .lines-display {
         min-width: 45px;
         padding: 3px 5px;
     }
-    
+
     .lines-number {
         font-size: 12px;
     }
-    
+
     .lines-label {
         font-size: 5px;
     }
-    
+
     .play-item {
         padding: 5px 8px;
         height: 28px;
     }
-    
+
     .play-label {
         font-size: 7px;
     }
-    
+
     .play-value {
         font-size: 10px;
     }
-    
+
     .control-btn {
         width: 22px;
         height: 22px;
         font-size: 9px;
     }
-    
+
     .win-display {
         min-width: 90px;
         padding: 6px 12px;
     }
-    
+
     .win-amount {
         font-size: 16px;
     }
-    
+
     .win-label {
         font-size: 7px;
     }
-    
+
     .fast-btn {
         width: 35px;
         height: 35px;
     }
-    
+
     .fast-text {
         font-size: 6px;
     }
-    
+
     .spin-btn {
         width: 70px;
         height: 35px;
     }
-    
+
     .spin-text {
         font-size: 10px;
     }
-    
+
     .autoplay-text {
         font-size: 5px;
     }
@@ -1472,94 +1754,118 @@ body {
 
 /* Large Phones (481px to 600px) */
 @media (min-width: 481px) and (max-width: 600px) {
-    .loading-title { font-size: 36px; }
-    .loading-subtitle { font-size: 16px; }
-    .loading-progress { width: 280px; }
-    
-    .slot-loader { gap: 12px; }
-    .loader-reel { width: 70px; height: 105px; }
-    .loader-symbol { font-size: 28px; }
-    
+    .loading-title {
+        font-size: 36px;
+    }
+
+    .loading-subtitle {
+        font-size: 16px;
+    }
+
+    .loading-progress {
+        width: 280px;
+    }
+
+    .slot-loader {
+        gap: 12px;
+    }
+
+    .loader-reel {
+        width: 70px;
+        height: 105px;
+    }
+
+    .loader-symbol {
+        font-size: 28px;
+    }
+
     .game-header {
         min-height: 60px;
         padding: 10px 15px;
         gap: 10px;
     }
-    
+
     .retro-panel {
         padding: 8px 12px;
         border-radius: 6px;
     }
-    
+
     .coin-icon {
         width: 24px;
         height: 24px;
         font-size: 14px;
     }
-    
+
     .coin-count {
         font-size: 20px;
     }
-    
-    .mini-text, .mini-amount {
+
+    .mini-text,
+    .mini-amount {
         font-size: 20px;
     }
-    
+
     .menu-button {
         width: 36px;
         height: 36px;
     }
-    
+
     .menu-line {
         width: 16px;
         height: 3px;
     }
-    
+
     .game-content {
         flex-direction: row;
         padding: 10px 10px 90px 10px;
         gap: 15px;
     }
-    
+
     .paylines-display {
         flex-direction: column;
         gap: 8px;
         margin-right: 15px;
         margin-bottom: 0;
     }
-    
+
     .payline-item {
         min-width: 45px;
         padding: 5px 8px;
         font-size: 12px;
     }
-    
+
     .slot-machine {
         flex: 1;
         max-width: none;
     }
-    
+
     .symbol-box {
         width: 80px;
         height: 80px;
     }
-    
+
     .symbol {
         font-size: 32px;
     }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+
+    .apple,
+    .bell,
+    .orange,
+    .cherry,
+    .lemon,
+    .grape,
+    .wild {
         font-size: 36px;
     }
-    
+
     .bar {
         font-size: 20px;
     }
-    
+
     .reel-container {
         height: 264px;
     }
-    
+
     .game-interface {
         padding: 10px 15px;
         min-height: 110px;
@@ -1568,17 +1874,17 @@ body {
         justify-content: space-between;
         gap: 15px;
     }
-    
+
     .lines-section {
         margin-bottom: 0;
         flex: 1;
     }
-    
+
     .win-section {
         margin-bottom: 0;
         flex: 1;
     }
-    
+
     .action-section {
         flex: 1;
         justify-content: flex-end;
@@ -1587,94 +1893,118 @@ body {
 
 /* Small Tablets (601px to 768px) */
 @media (min-width: 601px) and (max-width: 768px) {
-    .loading-title { font-size: 40px; }
-    .loading-subtitle { font-size: 18px; }
-    .loading-progress { width: 320px; }
-    
-    .slot-loader { gap: 15px; }
-    .loader-reel { width: 80px; height: 120px; }
-    .loader-symbol { font-size: 32px; }
-    
+    .loading-title {
+        font-size: 40px;
+    }
+
+    .loading-subtitle {
+        font-size: 18px;
+    }
+
+    .loading-progress {
+        width: 320px;
+    }
+
+    .slot-loader {
+        gap: 15px;
+    }
+
+    .loader-reel {
+        width: 80px;
+        height: 120px;
+    }
+
+    .loader-symbol {
+        font-size: 32px;
+    }
+
     .game-header {
         min-height: 70px;
         padding: 12px 20px;
         gap: 12px;
     }
-    
+
     .retro-panel {
         padding: 10px 15px;
         border-radius: 7px;
     }
-    
+
     .coin-icon {
         width: 28px;
         height: 28px;
         font-size: 16px;
     }
-    
+
     .coin-count {
         font-size: 24px;
     }
-    
-    .mini-text, .mini-amount {
+
+    .mini-text,
+    .mini-amount {
         font-size: 24px;
     }
-    
+
     .menu-button {
         width: 40px;
         height: 40px;
     }
-    
+
     .menu-line {
         width: 18px;
         height: 3px;
     }
-    
+
     .game-content {
         flex-direction: row;
         padding: 15px 15px 100px 15px;
         gap: 20px;
     }
-    
+
     .paylines-display {
         flex-direction: column;
         gap: 10px;
         margin-right: 20px;
         margin-bottom: 0;
     }
-    
+
     .payline-item {
         min-width: 55px;
         padding: 6px 10px;
         font-size: 14px;
     }
-    
+
     .slot-machine {
         flex: 1;
         max-width: none;
     }
-    
+
     .symbol-box {
         width: 90px;
         height: 90px;
     }
-    
+
     .symbol {
         font-size: 36px;
     }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+
+    .apple,
+    .bell,
+    .orange,
+    .cherry,
+    .lemon,
+    .grape,
+    .wild {
         font-size: 40px;
     }
-    
+
     .bar {
         font-size: 22px;
     }
-    
+
     .reel-container {
         height: 290px;
     }
-    
+
     .game-interface {
         padding: 12px 20px;
         min-height: 120px;
@@ -1683,7 +2013,7 @@ body {
         justify-content: space-between;
         gap: 20px;
     }
-    
+
     .lines-section,
     .win-section,
     .action-section {
@@ -1698,46 +2028,52 @@ body {
         padding: 20px 20px 120px 20px;
         gap: 30px;
     }
-    
+
     .paylines-display {
         flex-direction: column;
         gap: 12px;
         margin-right: 30px;
         margin-bottom: 0;
     }
-    
+
     .payline-item {
         min-width: 60px;
         padding: 8px 12px;
         font-size: 16px;
     }
-    
+
     .slot-machine {
         flex: 1;
         max-width: none;
     }
-    
+
     .symbol-box {
         width: 100px;
         height: 100px;
     }
-    
+
     .symbol {
         font-size: 40px;
     }
-    
-    .apple, .bell, .orange, .cherry, .lemon, .grape, .wild {
+
+    .apple,
+    .bell,
+    .orange,
+    .cherry,
+    .lemon,
+    .grape,
+    .wild {
         font-size: 48px;
     }
-    
+
     .bar {
         font-size: 24px;
     }
-    
+
     .reel-container {
         height: 330px;
     }
-    
+
     .game-interface {
         padding: 15px 25px;
         min-height: 130px;
@@ -1746,32 +2082,34 @@ body {
 
 /* Touch device optimizations */
 @media (hover: none) and (pointer: coarse) {
+
     .payline-item,
-    .control-btn,
+    /* .control-btn, */
     .fast-btn,
     .spin-btn {
         min-width: 44px;
         min-height: 44px;
     }
-    
-    .control-btn {
+
+    /* .control-btn {
         width: 32px;
         height: 22px;
-    }
-    
+    } */
+
     /* Increase hit targets for touch devices */
     .symbol-box {
         padding: 5px;
     }
-    
+
     .payline-item {
         padding: 8px 12px;
     }
-    
-    .spin-btn, .fast-btn {
+
+    .spin-btn,
+    .fast-btn {
         padding: 12px;
     }
-    
+
     /* Reduce animations that might cause performance issues */
     @media (prefers-reduced-motion: reduce) {
         * {
@@ -1789,41 +2127,47 @@ body {
         min-height: 50px;
         padding: 8px 15px;
     }
-    
+
     .game-content {
         flex-direction: row;
         padding-bottom: 80px;
     }
-    
+
     .paylines-display {
         flex-direction: column;
         margin-right: 15px;
         margin-bottom: 0;
     }
-    
+
     .slot-machine {
         max-width: 300px;
     }
-    
+
     .symbol-box {
         width: 70px;
         height: 70px;
     }
-    
+
     .symbol {
         font-size: 28px;
     }
-    
+
     .game-interface {
         min-height: 80px;
         padding: 8px 15px;
     }
-    
+
     .lines-section {
         margin-bottom: 0;
     }
-    
+
     .win-section {
         margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .control-buttons {
+        flex-direction: row;
     }
 }
