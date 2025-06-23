@@ -374,7 +374,7 @@ body {
         inset 0 2px 4px rgba(255, 255, 255, 0.1);
     width: 100%;
     max-width: 400px;
-    margin-bottom: 60px;
+    margin-bottom: 120px;
 }
 
 /* ===== WINNING COINS ANIMATION ===== */
@@ -2026,8 +2026,12 @@ body {
 @media (min-width: 769px) and (max-width: 1024px) {
     .game-content {
         flex-direction: row;
-        padding: 20px 20px 120px 20px;
+        padding: 80px 20px 50px 20px;
         gap: 30px;
+        margin-top: 10px;
+        align-items: flex-start; /* Align content to the top */
+        justify-content: center;
+        
     }
 
     .paylines-display {
@@ -2035,6 +2039,8 @@ body {
         gap: 12px;
         margin-right: 30px;
         margin-bottom: 0;
+        margin-top: 20px; /* Increased margin-top to align with slot machine */
+        max-width: 80px;
     }
 
     .payline-item {
@@ -2045,7 +2051,9 @@ body {
 
     .slot-machine {
         flex: 1;
-        max-width: none;
+        max-width: 500px; /* Restrict width to prevent stretching */
+        margin-top: 120px; /* Increased from 80px to 120px to lift higher */
+        margin-bottom: 100px;
     }
 
     .symbol-box {
@@ -2072,12 +2080,15 @@ body {
     }
 
     .reel-container {
-        height: 330px;
+        height: 360px;
     }
 
     .game-interface {
         padding: 15px 25px;
         min-height: 130px;
+        margin-top: 100px;
+        margin-bottom: 20px;
+
     }
 }
 
